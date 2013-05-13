@@ -12,7 +12,7 @@ return array(
         'language' => 'ar_jo',
 
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log'    , 'bootstrap',),
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -24,8 +24,12 @@ return array(
 		// uncomment the following to enable the Gii tool
 		/*
 		'gii'=>array(
+
 			'class'=>'system.gii.GiiModule',
 			'password'=>'Enter Your Password Here',
+       		'generatorPaths' => array(
+          		'bootstrap.gii'
+       		),			
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
@@ -68,6 +72,11 @@ return array(
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
+		'bootstrap' => array(
+		    'class' => 'ext.YiiBoosterRtl.components.Bootstrap',
+		    'responsiveCss' => true,
+		),
+
 		
 		'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
