@@ -44,9 +44,21 @@ If you have business inquiries or other questions, please fill out the following
 
     <?php echo $form->textFieldRow($model,'subject',array('size'=>60,'maxlength'=>128)); ?>
 
-    <?php echo $form->textAreaRow($model,'body',array('rows'=>6, 'class'=>'span8')); ?>
 
-	<?php if(CCaptcha::checkRequirements()): ?>
+    <?php $this->widget('ImperaviRedactorWidget', array(
+    'model' => $model,
+    'id'=>'Entry-text',
+    'attribute' => 'body',
+    'name' => 'Entry[body]',
+    'value'=>$model->body,
+    'options' => array(
+        'lang' => 'ar',
+        'direction'=>'rtl'
+    ),
+));
+
+
+ if(CCaptcha::checkRequirements()): ?>
 		<?php echo $form->captchaRow($model,'verifyCode',array(
             'hint'=>'Please enter the letters as they are shown in the image above.<br/>Letters are not case-sensitive.',
         )); ?>

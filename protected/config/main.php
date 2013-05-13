@@ -18,6 +18,8 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'ext.imperavi-redactor-widget.*',
+
 	),
 
 	'modules'=>array(
