@@ -1,0 +1,3 @@
+[submodule "protected/extensions/YiiBoosterRtl"]
+	path = protected/extensions/YiiBoosterRtl
+	url = git@github.com:ameen-sarsour/YiiBooster.git
