@@ -1,0 +1,4 @@
+appii
+=====
+
+Yii structured app
