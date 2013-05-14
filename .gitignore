@@ -1,4 +1,4 @@
-assets/
+public_web/assets/
 protected/runtime/
 themes/classic/views/
 logs/
