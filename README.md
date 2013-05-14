@@ -1,7 +1,6 @@
-<h1>appii</h1>
-=====
+# appii
 
-<h2>Yii structured app</h2>
+## Yii structured app
 appii <br/>
 └──	protected <br/>
 │	├──controller   <br/>
@@ -26,6 +25,6 @@ appii <br/>
 
 	
 
-<h2>Requirment </h2>
+## Requirment 
 Redis <br />
 yum install php-redis
