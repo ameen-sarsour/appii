@@ -5,7 +5,7 @@
 
 $this->pageTitle=Yii::app()->name . ' - Contact Us';
 $this->breadcrumbs=array(
-	'Contact',
+	'التواصل',
 );
 ?>
 
@@ -68,7 +68,7 @@ $this->breadcrumbs=array(
 		<?php $this->widget('bootstrap.widgets.TbButton',array(
             'buttonType'=>'submit',
             'type'=>'primary',
-            'label'=>'Submit',
+            'label'=>'ارسال',
         )); ?>
 	</div>
 
