@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Contact Us</h1>
+<h1> اتصل بنا</h1>
 
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
 
@@ -20,7 +20,7 @@ $this->breadcrumbs=array(
 <?php else: ?>
 
 <p>
-If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
+    إذا كان عندك سؤال او استفسار الرجاء تعبئة النموذج التالي للتواصل معنا، شكرا لك 
 </p>
 
 <div class="form">
@@ -34,7 +34,7 @@ If you have business inquiries or other questions, please fill out the following
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+    <p class="note">الخانات الموسمة بـ <span class="required">*</span> مطلوبة.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -60,7 +60,7 @@ If you have business inquiries or other questions, please fill out the following
 
  if(CCaptcha::checkRequirements()): ?>
 		<?php echo $form->captchaRow($model,'verifyCode',array(
-            'hint'=>'Please enter the letters as they are shown in the image above.<br/>Letters are not case-sensitive.',
+            'hint'=>'الرجاء ادخال الحروف كالتي في الصورة.<br/>لا تهتم لحالة الحروف.',
         )); ?>
 	<?php endif; ?>
 

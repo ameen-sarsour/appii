@@ -5,21 +5,21 @@ $this->pageTitle=Yii::app()->name;
 ?>
 
 <?php $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
-    'heading'=>'Welcome to '.CHtml::encode(Yii::app()->name),
+    'heading'=>'أهلا بك في '.CHtml::encode(Yii::app()->name),
 )); ?>
 
-<p>Congratulations! You have successfully created your Yii application.</p>
+<p> تهانينا ! لقد انشئت تطبيقي بنجاح</p>
 
 <?php $this->endWidget(); ?>
 
-<p>You may change the content of this page by modifying the following two files:</p>
+<p> يمكنك تغير محتوى هذه الصفحة عن طريق تعديل هذه الملفات</p>
 
 <ul>
-    <li>View file: <code><?php echo __FILE__; ?></code></li>
-    <li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
+    <li>ملف العرض: <code><?php echo __FILE__; ?></code></li>
+    <li>ملف النموذج: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
 </ul>
 
-<p>For more details on how to further develop this application, please read
-    the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-    Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-    should you have any questions.</p>
+<p>
+	للمزيد من التفاصيل، يمكنك متابعتنا <a href="https://github.com/kefahi/appii">هنا</a>.
+	ويمكنك طرح الاسئلة  <a href="https://github.com/kefahi/appii/issues/new"> هنا </a>,
+    .</p>
