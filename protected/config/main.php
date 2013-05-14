@@ -19,23 +19,24 @@ return array(
 		'application.models.*',
 		'application.components.*',
 		'ext.imperavi-redactor-widget.*',
-
+		
 	),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-		/*
+		
 		'gii'=>array(
 
 			'class'=>'system.gii.GiiModule',
-			'password'=>'Enter Your Password Here',
+			//'class'=>'bootstrap.gii.GiiBoost' , 
+			'password'=>'nnn',
        		'generatorPaths' => array(
           		'bootstrap.gii'
        		),			
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
-		*/
+		
 	),
 
 	// application components
@@ -86,7 +87,7 @@ return array(
 		// uncomment the following to use a MySQL database
 		/*
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+			'connectionString' => 'mysql:host=localhost;dbname=fordelete',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',

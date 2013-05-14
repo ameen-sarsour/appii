@@ -3,10 +3,9 @@
 
 $this->pageTitle=Yii::app()->name . ' - About';
 $this->breadcrumbs=array(
-	'About',
+	'عنا',
 );
 ?>
-<h1>About</h1>
+<h1>عنا</h1>
 
-<p>This is a "static" page. You may change the content of this page
-by updating the file <code><?php echo __FILE__; ?></code>.</p>
+<p> هذه صفحة ثابتة. يمكنك تغير محتوى هذه الصفحة عن طريق تعديل هذا الملف  <code><?php echo __FILE__; ?></code>.</p>
