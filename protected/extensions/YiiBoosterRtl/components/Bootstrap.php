@@ -123,9 +123,40 @@ class Bootstrap extends CApplicationComponent
 
 		if ($this->enableJS !== false)
 			$this->registerCoreScripts();
-
+		$this->registerDocsCss();
+		 $this->registerAllJsPlugin();
 		parent::init();
 	}
+
+
+
+	/**
+	 * Registers the Bootstrap CSS.
+	 */
+	public function registerAllJsPlugin()
+	{
+				$cs = Yii::app()->getClientScript();
+		$cs->registerCoreScript('jquery');
+
+		//	$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap' . (!YII_DEBUG ? '.min' : '') . '.js', $position);
+
+		$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap-transition.js');
+		$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap-alert.js');
+		$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap-modal.js');
+		$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap-dropdown.js');
+		$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap-scrollspy.js');
+		$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap-tab.js');
+		$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap-tooltip.js');
+		$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap-popover.js');
+		$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap-button.js');
+		$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap-collapse.js');
+		$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap-carousel.js');
+		$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap-typeahead.js');
+		$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap-affix.js');
+		
+	}
+
+
 
 	/**
 	 * Registers the Bootstrap CSS.
@@ -133,6 +164,14 @@ class Bootstrap extends CApplicationComponent
 	public function registerCoreCss()
 	{
 		$this->registerAssetCss('bootstrap.rtl' . (!YII_DEBUG ? '.min' : '') . '.css');
+	}
+
+	/**
+	 * Registers the Bootstrap CSS.
+	 */
+	public function registerDocsCss()
+	{
+		$this->registerAssetCss('docs.rtl' . (!YII_DEBUG ? '.min' : '') . '.css');
 	}
 
 	/**
