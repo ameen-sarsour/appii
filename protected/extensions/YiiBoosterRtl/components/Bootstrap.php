@@ -153,10 +153,7 @@ class Bootstrap extends CApplicationComponent
 		$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap-carousel.js');
 		$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap-typeahead.js');
 		$cs->registerScriptFile($this->getAssetsUrl() . '/js/bootstrap-affix.js');
-		//$cs->registerScriptFile($this->getAssetsUrl() . '/js/application.js');
 		
-
-
 	}
 
 
