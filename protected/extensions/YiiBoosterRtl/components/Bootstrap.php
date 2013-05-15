@@ -123,7 +123,7 @@ class Bootstrap extends CApplicationComponent
 
 		if ($this->enableJS !== false)
 			$this->registerCoreScripts();
-
+		$this->registerDocsCss();
 		parent::init();
 	}
 
@@ -133,6 +133,14 @@ class Bootstrap extends CApplicationComponent
 	public function registerCoreCss()
 	{
 		$this->registerAssetCss('bootstrap.rtl' . (!YII_DEBUG ? '.min' : '') . '.css');
+	}
+
+	/**
+	 * Registers the Bootstrap CSS.
+	 */
+	public function registerDocsCss()
+	{
+		$this->registerAssetCss('docs.rtl' . (!YII_DEBUG ? '.min' : '') . '.css');
 	}
 
 	/**
