@@ -9,6 +9,12 @@ WYSIWYG widget - Redactore
 
 Add Font: Uthman Taha and Uthman Taha Bold
 
+Remove unsed files - like language
+
+Translate text
+
+
+
 ## Yii structured app
 appii <br/>
 └──	protected <br/>
