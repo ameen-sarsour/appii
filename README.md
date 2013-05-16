@@ -1,5 +1,20 @@
 # appii
 
+## New Feature
+Cache with Redis
+
+Bootstrap Theme
+
+WYSIWYG widget - Redactore
+
+Add Font: Uthman Taha and Uthman Taha Bold
+
+Remove unsed files - like language
+
+Translate text
+
+
+
 ## Yii structured app
 appii <br/>
 └──	protected <br/>
@@ -14,7 +29,7 @@ appii <br/>
 │	│	├──imperavi-redactor-widget <br/>
 │	│	├──mailer <br/>
 │	│	├──redis <br/>
-│	│	├──models <br/>
+│	├──models <br/>
 │	├──runtime <br/>
 │	├──tests <br/>
 │	├──view <br/>

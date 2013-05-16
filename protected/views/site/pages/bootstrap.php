@@ -19,7 +19,7 @@ $cs->registerScriptFile(Yii::app()->bootstrap->getAssetsUrl() . '/js/application
         <li><a href="#tooltips" ><i class="icon-chevron-right"></i>تلميحات</a></li>
         <li><a href="#popovers" ><i class="icon-chevron-right"></i>Popovers</a></li>
         <li><a href="#carousel" ><i class="icon-chevron-right"></i>Carousel</a></li>       
-<li><a href='http://muayyad-alsadi.github.io/bootstrap-rtl/' > جميع الميزات والوثائق موجودة هنا </a></li>
+<li><a target=blank href='http://muayyad-alsadi.github.io/bootstrap-rtl/' > جميع الميزات وتوثيقها موجود على هذا الرابط  http://muayyad-alsadi.github.io/bootstrap-rtl/ </a></li>
       </ul>
       
     </div>
@@ -29,8 +29,8 @@ $cs->registerScriptFile(Yii::app()->bootstrap->getAssetsUrl() . '/js/application
 
 <section id="gridSystem">
           <div class="page-header">
-            <h1>عرض الشبكة الافتراضي </h1> 
-            Default grid system <br/>
+            <h1>عرض الشبكة الافتراضي <small>
+            Default grid system </small> </h1> <br/>
             - الصفحة الحالية: القائمة التي على اليمين تتكون من 3 اعمدة ( class="span3" ) وهذا الشرح يتكون من 9 أعمدة  ( class="span9" )
           </div>
 
@@ -228,24 +228,20 @@ $cs->registerScriptFile(Yii::app()->bootstrap->getAssetsUrl() . '/js/application
               </div>
             </div>
           </div>
-<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn-toolbar"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn-group"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"icon-align-left"</span><span class="tag">&gt;&lt;/i&gt;&lt;/a&gt;</span></li><li class="L3"><span class="pln">    </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"icon-align-center"</span><span class="tag">&gt;&lt;/i&gt;&lt;/a&gt;</span></li><li class="L4"><span class="pln">    </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"icon-align-right"</span><span class="tag">&gt;&lt;/i&gt;&lt;/a&gt;</span></li><li class="L5"><span class="pln">    </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"icon-align-justify"</span><span class="tag">&gt;&lt;/i&gt;&lt;/a&gt;</span></li><li class="L6"><span class="pln">  </span><span class="tag">&lt;/div&gt;</span></li><li class="L7"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
 
-          <h5>Dropdown in a button group</h5>
+          <h5>قائمة منسدلة ومجموعة من الأزرار</h5>
           <div class="bs-docs-example">
             <div class="btn-group">
-              <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
+              <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> المستخدم</a>
               <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-                <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
-                <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
+                <li><a href="#"><i class="icon-pencil"></i> تحرير</a></li>
+                <li><a href="#"><i class="icon-trash"></i> حذف</a></li>
                 <li class="divider"></li>
-                <li><a href="#"><i class="i"></i> Make admin</a></li>
+                <li><a href="#"><i class="i"></i> ترقيه</a></li>
               </ul>
             </div>
           </div>
-<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn-group"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn btn-primary"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"icon-user icon-white"</span><span class="tag">&gt;&lt;/i&gt;</span><span class="pln"> User</span><span class="tag">&lt;/a&gt;</span></li><li class="L2"><span class="pln">  </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn btn-primary dropdown-toggle"</span><span class="pln"> </span><span class="atn">data-toggle</span><span class="pun">=</span><span class="atv">"dropdown"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;&lt;span</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"caret"</span><span class="tag">&gt;&lt;/span&gt;&lt;/a&gt;</span></li><li class="L3"><span class="pln">  </span><span class="tag">&lt;ul</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"dropdown-menu"</span><span class="tag">&gt;</span></li><li class="L4"><span class="pln">    </span><span class="tag">&lt;li&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"icon-pencil"</span><span class="tag">&gt;&lt;/i&gt;</span><span class="pln"> Edit</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span></li><li class="L5"><span class="pln">    </span><span class="tag">&lt;li&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"icon-trash"</span><span class="tag">&gt;&lt;/i&gt;</span><span class="pln"> Delete</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span></li><li class="L6"><span class="pln">    </span><span class="tag">&lt;li&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"icon-ban-circle"</span><span class="tag">&gt;&lt;/i&gt;</span><span class="pln"> Ban</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span></li><li class="L7"><span class="pln">    </span><span class="tag">&lt;li</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"divider"</span><span class="tag">&gt;&lt;/li&gt;</span></li><li class="L8"><span class="pln">    </span><span class="tag">&lt;li&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"i"</span><span class="tag">&gt;&lt;/i&gt;</span><span class="pln"> Make admin</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span></li><li class="L9"><span class="pln">  </span><span class="tag">&lt;/ul&gt;</span></li><li class="L0"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
-
           
           <h4>التنقل</h4>
           <div class="bs-docs-example">
@@ -257,7 +253,6 @@ $cs->registerScriptFile(Yii::app()->bootstrap->getAssetsUrl() . '/js/application
               </ul>
             </div>
           </div>
-<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;ul</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"nav nav-list"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;li</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"active"</span><span class="tag">&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"icon-home icon-white"</span><span class="tag">&gt;&lt;/i&gt;</span><span class="pln"> Home</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span></li><li class="L2"><span class="pln">  </span><span class="tag">&lt;li&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"icon-book"</span><span class="tag">&gt;&lt;/i&gt;</span><span class="pln"> Library</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span></li><li class="L3"><span class="pln">  </span><span class="tag">&lt;li&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"icon-pencil"</span><span class="tag">&gt;&lt;/i&gt;</span><span class="pln"> Applications</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span></li><li class="L4"><span class="pln">  </span><span class="tag">&lt;li&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"i"</span><span class="tag">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span></li><li class="L5"><span class="tag">&lt;/ul&gt;</span></li></ol></pre>
 
 
         </section>
@@ -279,16 +274,15 @@ $cs->registerScriptFile(Yii::app()->bootstrap->getAssetsUrl() . '/js/application
           <div class="bs-docs-example">
             <div class="navbar">
               <div class="navbar-inner">
-                <a class="brand" href="#">Title</a>
+                <a class="brand" href="#">العنوان</a>
                 <ul class="nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
+                  <li class="active"><a href="#">الرئيسية</a></li>
+                  <li><a href="#">رابط</a></li>
+                  <li><a href="#">رابط</a></li>
                 </ul>
               </div>
             </div>
           </div>
-<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"navbar"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"navbar-inner"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"brand"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;</span><span class="pln">Title</span><span class="tag">&lt;/a&gt;</span></li><li class="L3"><span class="pln">    </span><span class="tag">&lt;ul</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"nav"</span><span class="tag">&gt;</span></li><li class="L4"><span class="pln">      </span><span class="tag">&lt;li</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"active"</span><span class="tag">&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;</span><span class="pln">Home</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span></li><li class="L5"><span class="pln">      </span><span class="tag">&lt;li&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;</span><span class="pln">Link</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span></li><li class="L6"><span class="pln">      </span><span class="tag">&lt;li&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;</span><span class="pln">Link</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span></li><li class="L7"><span class="pln">    </span><span class="tag">&lt;/ul&gt;</span></li><li class="L8"><span class="pln">  </span><span class="tag">&lt;/div&gt;</span></li><li class="L9"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
 
 
           <hr class="bs-docs-separator">
@@ -309,17 +303,17 @@ $cs->registerScriptFile(Yii::app()->bootstrap->getAssetsUrl() . '/js/application
             <div id="navbarExample" class="navbar navbar-static">
               <div class="navbar-inner">
                 <div class="container" style="width: auto;">
-                  <a class="brand" href="#">Project Name</a>
+                  <a class="brand" href="#">مجمع الأحكام</a>
                   <ul class="nav">
-                    <li class="active"><a href="#fat">@fat</a></li>
-                    <li class=""><a href="#mdo">@mdo</a></li>
+                    <li class="active"><a href="#fat">حِلمٌ</a></li>
+                    <li class=""><a href="#mdo">رُبَّ أخٍ لَكَ لَم تَلِدْه أمّك </a></li>
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">الشافعي <b class="caret"></b></a>
                       <ul class="dropdown-menu">
-                        <li class=""><a href="#one">one</a></li>
-                        <li class=""><a href="#two">two</a></li>
+                        <li class=""><a href="#one">طولُ الحياةِ طيبُ الذكر </a></li>
+                        <li class=""><a href="#two">الحَثُّ على السفر</a></li>
                         <li class="divider"></li>
-                        <li><a href="#three">three</a></li>
+                        <li><a href="#three">مَحبَّةُ الصالِحين</a></li>
                       </ul>
                     </li>
                   </ul>
@@ -327,18 +321,23 @@ $cs->registerScriptFile(Yii::app()->bootstrap->getAssetsUrl() . '/js/application
               </div>
             </div>
             <div data-spy="scroll" data-target="#navbarExample" data-offset="0" class="scrollspy-example">
-              <h4 id="fat">@fat</h4>
-              <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
-              <h4 id="mdo">@mdo</h4>
-              <p>Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney's vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney's quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.</p>
-              <h4 id="one">one</h4>
-              <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p>
-              <h4 id="two">two</h4>
-              <p>In incididunt echo park, officia deserunt mcsweeney's proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven't heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p>
-              <h4 id="three">three</h4>
-              <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
-              <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.
-              </p>
+              <h4 id="fat">حِلمٌ</h4>
+              <p>قال خالدُ بنُ صفوان وهو مِن شُعراءِ العربِ : رأيتُ رَجلاً شَتَمَ عمرو بن عُبيد، فَما بَقّى لهُ شيئاً. فلمّا سَكَتَ، قال لهُ عمرو : آجركَ الله على الصوابِ وغفرَ لكَ الخطأ. قال خالد : فما حَسَدتُ أحداً حَسَدي لَهُ على حِلمِهِ وكلمَتِه.</p>
+              <h4 id="mdo">رُبَّ أخٍ لَكَ لَم تَلِدْه أمّك </h4>
+              <p> أخٌ لي عِندَهُ أدَبُ -- صَداقَةُ مِثلِهُ نَسَبُ <br/>
+رَعى لي فَوقَ ما أرعى -- وأوجَبَ لي فوقَ ما يَجِبُ.</p>
+              <h4 id="one">
+طولُ الحياةِ طيبُ الذكر </h4>
+              <p>قد ماتَ قَومٌ وما ماتت مكارِمُهُم -- وعاشَ قَومٌ وهُم في الناسِ أمواتُ.</p>
+              <h4 id="two">الحَثُّ على السفر </h4>
+              <p> ما في المُقامِ لذي عَقلٍ وذي أَدَبٍ -- مِن راحةٍ فَدَعْ الأوطانَ واغتربِ <br/>
+سافرْ تَجِدْ عَوَضاً عَمَّن تُفارِقُهُ -- وانصَبْ فإنَّ لَذيذَ العَيشِ في النَصَبِ.</p>
+              <h4 id="three">
+مَحبَّةُ الصالِحين </h4>
+              <p> أُحِبُّ الصالحينَ وَ لَستُ مِنهُم -- لَعَلي أَنْ أَنالَ بِهِم شَفاعَة <br />
+وأَكرَهُ مَن تِجارَتُهُ المعاصي -- وَ لَو كُنَّا سَواءٌ في البِضاعَة
+ </p>
+            
             </div>
           </div>
 
@@ -357,7 +356,12 @@ $cs->registerScriptFile(Yii::app()->bootstrap->getAssetsUrl() . '/js/application
 
 
           <div class="bs-docs-example tooltip-demo">
-            <p class="muted" style="margin-bottom: 0;">Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a data-original-title="Another tooltip" href="#" data-toggle="tooltip" title="">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-toggle="tooltip" title="A much longer tooltip belongs right here to demonstrate the max-width we apply.">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-toggle="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.
+            <p class="muted" style="margin-bottom: 0;">
+ وقال <a href="#" data-toggle="tooltip" title="شاعر وعالم وفقيه">الشافعي</a>  :
+كُلَّما أَدَّبَني الدَّهرُ -- أَراني نَقصَ عَقلي
+وَ إذا ما ازدَدتُ عِلماً -- زادَني عِلماً بِجَهلي
+
+              
             </p>
           </div>
 
@@ -379,39 +383,45 @@ $cs->registerScriptFile(Yii::app()->bootstrap->getAssetsUrl() . '/js/application
 
 
 <section id="popovers">
-          <h3>Static popover</h3>
+          <h3>Popover ثابت</h3>
         
                 <div class="bs-docs-example bs-docs-example-popover">
           <div class="popover top">
             <div class="arrow"></div>
-            <h3 class="popover-title">Popover top</h3>
+            <h3 class="popover-title">من الأعلى</h3>
             <div class="popover-content">
-              <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+              <p> و قَد كُنتُ أُخفِي حُبَّ مَيٍّ  و ذِكرَهَا -- رَسيسَ الهَوَى حَتّى كأنْ لا أُريدُها <br/>
+فَما زالَ يَغلُو حبُّ مَيَّةَ عِندَنا -- و يَزدادُ حَتّى لَمْ نَجِدْ ما يَزِيدُها .</p>
             </div>
           </div>
 
 
           <div class="popover right">
             <div class="arrow"></div>
-            <h3 class="popover-title">Popover right</h3>
+            <h3 class="popover-title">من اليمين</h3>
             <div class="popover-content">
-              <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+
+                <p> حَيِّ المَنَازِلَ إذْ لا نَبْتَغي بَدَلاً  --  بِالدارِ داراً، وَلا الجِيرَانِ جِيرَانَا <br/>
+
+قَدْ كنْتُ في أثَرِ الأظْعانِ ذا طَرَبٍ  --  مُرَوَّعاً مِن حذارِ البينِ محزانا.</p>
+
             </div>
           </div>
 
           <div class="popover bottom">
             <div class="arrow"></div>
-            <h3 class="popover-title">Popover bottom</h3>
+            <h3 class="popover-title">من الأسفل</h3>
             <div class="popover-content">
-              <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+
+              <p> بَانَ الخَليطُ، وَلَو طُوِّعْتُ ما بَانَا،  --  و قَطَّعوا مِن حِبالِ الوَصلِ أقرانا.</p>            
             </div>
           </div>
 
           <div class="popover left">
             <div class="arrow"></div>
-            <h3 class="popover-title">Popover left</h3>
+            <h3 class="popover-title">من اليسار</h3>
             <div class="popover-content">
-              <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+              <p> إنّ العُيُونَ التي في طَرْفِها حَوَرٌ،  --  قتلننا ثمَّ لَم يُحيينَ قتلانا.</p>
             </div>
           </div>
 
@@ -441,7 +451,7 @@ $cs->registerScriptFile(Yii::app()->bootstrap->getAssetsUrl() . '/js/application
 
 <section id="carousel">
             <div class="page-header">
-              <h1>Carousel <small>bootstrap-carousel.js</small></h1>
+              <h1>التدوير <small>Carousel</small></h1>
             </div>
 
             <div class="bs-docs-example">
@@ -455,22 +465,22 @@ $cs->registerScriptFile(Yii::app()->bootstrap->getAssetsUrl() . '/js/application
                   <div class="item">
                     <img src="/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
                     <div class="carousel-caption">
-                      <h4>First Thumbnail label</h4>
-                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                      <h4>العنوان الأول</h4>
+                      <p>النص الأول .</p>
                     </div>
                   </div>
                   <div class="item active">
                     <img src="/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
                     <div class="carousel-caption">
-                      <h4>Second Thumbnail label</h4>
-                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                      <h4>العنوان الثاني</h4>
+                      <p>النص الثاني.</p>
                     </div>
                   </div>
                   <div class="item">
                     <img src="/img/bootstrap-mdo-sfmoma-03.jpg" alt="">
                     <div class="carousel-caption">
-                      <h4>Third Thumbnail label</h4>
-                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                      <h4>العنوان الثالث</h4>
+                      <p>النص الثالث.</p>
                     </div>
                   </div>
                 </div>
@@ -478,7 +488,6 @@ $cs->registerScriptFile(Yii::app()->bootstrap->getAssetsUrl() . '/js/application
                 <a class="right carousel-control" href="#myCarousel" data-slide="next">‹</a>
               </div>
             </div>
-<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"myCarousel"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"carousel slide"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;ol</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"carousel-indicators"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;li</span><span class="pln"> </span><span class="atn">data-target</span><span class="pun">=</span><span class="atv">"#myCarousel"</span><span class="pln"> </span><span class="atn">data-slide-to</span><span class="pun">=</span><span class="atv">"0"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"active"</span><span class="tag">&gt;&lt;/li&gt;</span></li><li class="L3"><span class="pln">    </span><span class="tag">&lt;li</span><span class="pln"> </span><span class="atn">data-target</span><span class="pun">=</span><span class="atv">"#myCarousel"</span><span class="pln"> </span><span class="atn">data-slide-to</span><span class="pun">=</span><span class="atv">"1"</span><span class="tag">&gt;&lt;/li&gt;</span></li><li class="L4"><span class="pln">    </span><span class="tag">&lt;li</span><span class="pln"> </span><span class="atn">data-target</span><span class="pun">=</span><span class="atv">"#myCarousel"</span><span class="pln"> </span><span class="atn">data-slide-to</span><span class="pun">=</span><span class="atv">"2"</span><span class="tag">&gt;&lt;/li&gt;</span></li><li class="L5"><span class="pln">  </span><span class="tag">&lt;/ol&gt;</span></li><li class="L6"><span class="pln">  </span><span class="com">&lt;!-- Carousel items --&gt;</span></li><li class="L7"><span class="pln">  </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"carousel-inner"</span><span class="tag">&gt;</span></li><li class="L8"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"active item"</span><span class="tag">&gt;</span><span class="pln">…</span><span class="tag">&lt;/div&gt;</span></li><li class="L9"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"item"</span><span class="tag">&gt;</span><span class="pln">…</span><span class="tag">&lt;/div&gt;</span></li><li class="L0"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"item"</span><span class="tag">&gt;</span><span class="pln">…</span><span class="tag">&lt;/div&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;/div&gt;</span></li><li class="L2"><span class="pln">  </span><span class="com">&lt;!-- Carousel nav --&gt;</span></li><li class="L3"><span class="pln">  </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"carousel-control left"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#myCarousel"</span><span class="pln"> </span><span class="atn">data-slide</span><span class="pun">=</span><span class="atv">"prev"</span><span class="tag">&gt;</span><span class="pln">&amp;lsaquo;</span><span class="tag">&lt;/a&gt;</span></li><li class="L4"><span class="pln">  </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"carousel-control right"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#myCarousel"</span><span class="pln"> </span><span class="atn">data-slide</span><span class="pun">=</span><span class="atv">"next"</span><span class="tag">&gt;</span><span class="pln">&amp;rsaquo;</span><span class="tag">&lt;/a&gt;</span></li><li class="L5"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
 
           </section>
 

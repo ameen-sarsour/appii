@@ -8,6 +8,9 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+
 .clearfix {
   *zoom: 1;
 }
@@ -223,7 +226,7 @@ textarea {
 
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Droid Arabic Naskh", sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #333333;
@@ -1066,7 +1069,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Droid Arabic Naskh", Helvetica, Arial, sans-serif;
 }
 
 label {
@@ -4359,6 +4362,7 @@ input[type="submit"].btn.btn-mini {
   *z-index: 2;
   margin-bottom: 20px;
   overflow: visible;
+  font-family: 'Droid Arabic Kufi', serif;
 }
 
 .navbar-inner {
@@ -4511,7 +4515,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-search .search-query {
   padding: 4px 14px;
   margin-bottom: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Droid Arabic Kufi", sans-serif;
   font-size: 13px;
   font-weight: normal;
   line-height: 1;
