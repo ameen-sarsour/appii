@@ -1,10 +1,5 @@
-<?php
-        $cs = Yii::app()->getClientScript();
-    $cs->registerCoreScript('jquery');
 
-$cs->registerScriptFile(Yii::app()->bootstrap->getAssetsUrl() . '/js/application.js');
-?>
-
+    <link rel="stylesheet" type="text/css" href="/js/application.js" />
 <div class='container' >
   <div class="row">
     <div class="span3 bs-docs-sidebar" id="right-menu">
@@ -232,7 +227,7 @@ $cs->registerScriptFile(Yii::app()->bootstrap->getAssetsUrl() . '/js/application
           <h5>قائمة منسدلة ومجموعة من الأزرار</h5>
           <div class="bs-docs-example">
             <div class="btn-group">
-              <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> المستخدم</a>
+              <a class="btn btn-primary" href="#"><small><i class="icon-user icon-white"></i> المستخدم</small></a>
               <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#"><i class="icon-pencil"></i> تحرير</a></li>
