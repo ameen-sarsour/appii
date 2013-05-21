@@ -46,7 +46,7 @@ class Bootstrap extends CApplicationComponent
 	 */
 	public function registerCoreCss()
 	{
-		$filename = YII_DEBUG ? 'bootstrap.css' : 'bootstrap.min.css';
+		$filename = YII_DEBUG ? 'bootstrap.rtl.css' : 'bootstrap.rtl.min.css';
 		Yii::app()->clientScript->registerCssFile($this->getAssetsUrl().'/css/'.$filename);
 	}
 
@@ -59,7 +59,7 @@ class Bootstrap extends CApplicationComponent
 		/** @var CClientScript $cs */
 		$cs = Yii::app()->getClientScript();
 		$cs->registerMetaTag('width=device-width, initial-scale=1.0', 'viewport');
-		$filename = YII_DEBUG ? 'bootstrap-responsive.css' : 'bootstrap-responsive.min.css';
+		$filename = YII_DEBUG ? 'bootstrap-responsive.rtl.css' : 'bootstrap-responsive.rtl.min.css';
 		$cs->registerCssFile($this->getAssetsUrl().'/css/'.$filename);
 	}
 
@@ -81,6 +81,8 @@ class Bootstrap extends CApplicationComponent
 		$this->registerCoreCss();
 		$this->registerResponsiveCss();
 		$this->registerYiiCss();
+		$this->registerDocsCss();
+
 	}
 
 	/**
@@ -316,4 +318,13 @@ class Bootstrap extends CApplicationComponent
     {
         return '2.0.3';
     }
+
+    	/**
+	 * Registers the Bootstrap CSS.
+	 */
+	public function registerDocsCss()
+	{
+		Yii::app()->clientScript->registerCssFile($this->getAssetsUrl().'/css/' . 'docs.rtl' . (!YII_DEBUG ? '.min' : '') . '.css');
+		
+	}
 }

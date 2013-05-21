@@ -1,5 +1,4 @@
-
-    <link rel="stylesheet" type="text/css" href="/js/application.js" />
+<?php Yii::app()->getClientScript()->registerScriptFile( "/js/application.js" ); ?>
 <div class='container' >
   <div class="row">
     <div class="span3 bs-docs-sidebar" id="right-menu">
@@ -14,7 +13,7 @@
         <li><a href="#tooltips" ><i class="icon-chevron-right"></i>تلميحات</a></li>
         <li><a href="#popovers" ><i class="icon-chevron-right"></i>Popovers</a></li>
         <li><a href="#carousel" ><i class="icon-chevron-right"></i>Carousel</a></li>       
-<li><a target=blank href='http://muayyad-alsadi.github.io/bootstrap-rtl/' > جميع الميزات وتوثيقها موجود على هذا الرابط  http://muayyad-alsadi.github.io/bootstrap-rtl/ </a></li>
+<!-- <li><a target=blank href='http://muayyad-alsadi.github.io/bootstrap-rtl/' > جميع الميزات وتوثيقها موجود على هذا الرابط  http://muayyad-alsadi.github.io/bootstrap-rtl/ </a></li> -->
       </ul>
       
     </div>
