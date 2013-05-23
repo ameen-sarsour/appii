@@ -16,7 +16,7 @@ class Elastic extends CApplicationComponent {
 			if(is_array($value))
 				$mapping[$key] = array('properties' => self::buildMapping($value));
 			elseif($value == 'string' || $value == 'array') // TBD check if 'array' is correct here
-				$mapping[$key] = array('type'=>'string'); // TBD add optional support for untouched
+				$mapping[$key] = array('type'=>'string' , 'index' => 'analyzed' ,'index_analyzer'=>'arabic' ,'search_analyzer'=>'arabic'); // TBD add optional support for untouched
 			else
 				$mapping[$key] = array('type'=>$value);
 		}
@@ -61,8 +61,9 @@ class Elastic extends CApplicationComponent {
 				$value = $doc[$key];
 			}
 
-			if(!is_array($doc[$key]) && !is_array($type))
-				setType($doc[$key], $type);
+			if(!is_array($doc[$key]) && !is_array($type)) 
+				settype($doc[$key], $type); 
+			
 			$casted_data[$key] = $value;
 		}
 
@@ -97,9 +98,9 @@ class Elastic extends CApplicationComponent {
   public function import($type, $docs) {
     $bulk = '';
 		foreach($docs as $doc) {
-      $id = $doc['_id'];
-      unset($doc['_id']);
-			$bulk .= "{\"index\":{\"_id\":\"{$id}\"}}" . PHP_EOL . json_encode($doc) . PHP_EOL;
+      $id = $doc['id'];
+      unset($doc['id']);
+			$bulk .= "{\"index\":{\"id\":\"{$id}\"}}" . PHP_EOL . json_encode($doc) . PHP_EOL;
 		}
 		$response = $this->http_request->put("/{$this->index}/{$type}/_bulk", $bulk);
     self::check($response);
