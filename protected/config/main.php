@@ -22,6 +22,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'application.lib.*',
 		'ext.imperavi-redactor-widget.*',
 		
 	),
@@ -38,6 +39,12 @@ return array(
 
 	// application components
 	'components'=>array(
+    'elastic' => array(
+      'class' => 'Elastic',
+      'index' => 'appii',
+      'host' => '127.0.0.1',
+    ),
+
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
