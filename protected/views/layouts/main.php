@@ -27,9 +27,12 @@
     ),
 )); ?>
 
-
-
 <div class="container" id="page">
+
+    <form class="navbar-search pull-left" action="/site/search"  >
+    <input type="text" name="term" class="search-query" placeholder="بحث">
+    </form>
+
 
 
 

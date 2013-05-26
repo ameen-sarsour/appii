@@ -85,9 +85,10 @@ class Elastic extends CApplicationComponent {
     self::check($response);
 	}
 
-	public function search($type, $term) {
+	public function search($type, $term, $field) {
 		$query = '{"query":{"text":{"_all":"TERM"}}}';
 		$request = str_replace('TERM', $term, $query);
+
 		$response = $this->http_request->post("/{$this->index}/{$type}/_search", $request);
     self::check($response);
 		return $response;
