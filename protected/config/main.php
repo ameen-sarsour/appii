@@ -7,7 +7,6 @@ Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
-Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'موقعي',
@@ -28,14 +27,17 @@ return array(
 	),
 
 	'modules'=>array(
-		'admin',
 		// uncomment the following to enable the Gii tool
 		'gii'=>array(
 			'generatorPaths'=>array(
 				'bootstrap.gii',
-				),
-			),
+         	),
+			'class'=>'system.gii.GiiModule',
+			'password'=>'gii',
+			// If removed, Gii defaults to localhost only. Edit carefully to taste.
+			'ipFilters'=>array('127.0.0.1','::1'),
 		),
+	),
 
 	// application components
 	'components'=>array(
@@ -84,9 +86,14 @@ return array(
 		    //'class' => 'ext.YiiBoosterRtl.components.Bootstrap',
 		),
 
-		
+        'mongodb' => array(
+        	'class' => 'EMongoClient',
+        	'server' => 'mongodb://localhost:27017',
+        	'db' => 'books'
+        ),
+
 		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
+			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/1681.db3',
 		),
 		// uncomment the following to use a MySQL database
 		/*
