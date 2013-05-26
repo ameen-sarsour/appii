@@ -1,8 +1,8 @@
 <?php 
 return array(
-	'id'=> 'integer' ,  	
-	'number' => 'string' ,
-	'part' => 'string' ,
-	'hadith' => 'string' ,
-	'content' =>'string',
+	'id'=> array('type'=>'integer') ,  	
+	'number' => array('type'=>'integer') ,
+	'part' => array('type'=>'integer') ,
+	'hadith' => array('type'=>'integer') ,
+	'content' =>array('type'=>'string', 'index' => 'analyzed' ,'index_analyzer'=>'arabic' ,'search_analyzer'=>'arabic'),
 );

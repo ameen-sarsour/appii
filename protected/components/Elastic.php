@@ -13,12 +13,11 @@ class Elastic extends CApplicationComponent {
 	public static function buildMapping($attributes_mapping) {
 		$mapping = array();
 		foreach($attributes_mapping as $key => $value) {
-			if(is_array($value))
+			if(isset($value['type']) && is_string($value['type'])) {
+				$mapping[$key] = $value;
+			} else { // This is an array lets call-self
 				$mapping[$key] = array('properties' => self::buildMapping($value));
-			elseif($value == 'string' || $value == 'array') // TBD check if 'array' is correct here
-				$mapping[$key] = array('type'=>'string' , 'index' => 'analyzed' ,'index_analyzer'=>'arabic' ,'search_analyzer'=>'arabic'); // TBD add optional support for untouched
-			else
-				$mapping[$key] = array('type'=>$value);
+      }
 		}
 		return $mapping;
 	}
@@ -35,7 +34,8 @@ class Elastic extends CApplicationComponent {
 	public static function mapData($mapping, $doc) {
 		$casted_data = array();
 		foreach ($mapping as $key => $type) {
-			if (!isset($doc[$key]) || empty($doc[$key]) ) continue;
+			if (!isset($doc[$key]) || (empty($doc[$key]) && !is_bool($doc[$key]))) continue;
+      if(isset($type['type']) && is_string($type['type'])) $type = $type['type']; // Detect the map end point and just consider its type here.
 			if (is_array($type)) {
 				if(self::is_associative($doc[$key])) {
 					$value = self::mapData($type, $doc[$key]);
@@ -54,16 +54,12 @@ class Elastic extends CApplicationComponent {
 					$value = $doc[$key];
 				}
 				$type = 'string';
-			} elseif ($type == 'array') {
-				$value = $doc[$key];
-				$type = 'string';
 			} else {
 				$value = $doc[$key];
 			}
 
-			if(!is_array($doc[$key]) && !is_array($type)) 
-				settype($doc[$key], $type); 
-			
+			if(!is_array($doc[$key]) && !is_array($type))
+				setType($doc[$key], $type);
 			$casted_data[$key] = $value;
 		}
 
@@ -71,13 +67,15 @@ class Elastic extends CApplicationComponent {
 	}
 
 	public function delete($type) {
-		$response = $this->http_request->delete("/{$this->index}/$type");
+    $url = "/{$this->index}/";
+    if(isset($type)) $url .= "$type/_mapping";
+		$response = $this->http_request->delete($url);
     self::check($response);
 	}
 
-	public function create($type) {
-		$request = '{"settings":{"number_of_shards":5,"number_of_replicas":1}}';
-		$response = $this->http_request->put("/{$this->index}/$type", $request);
+	public function createIndex() {
+		$request = '{"settings":{"number_of_shards":5,"number_of_replicas":0}}';
+		$response = $this->http_request->put("/{$this->index}", $request);
     self::check($response);
 	}
 
@@ -100,7 +98,7 @@ class Elastic extends CApplicationComponent {
 		foreach($docs as $doc) {
       $id = $doc['id'];
       unset($doc['id']);
-			$bulk .= "{\"index\":{\"id\":\"{$id}\"}}" . PHP_EOL . json_encode($doc) . PHP_EOL;
+			$bulk .= "{\"index\":{\"_id\":\"{$id}\"}}" . PHP_EOL . json_encode($doc) . PHP_EOL;
 		}
 		$response = $this->http_request->put("/{$this->index}/{$type}/_bulk", $bulk);
     self::check($response);

@@ -3,8 +3,8 @@
 class ElasticCommand extends CConsoleCommand {
 	const LOG = 'elastic';
 
-	public function actionCreate($type = null) {
-		try { Yii::app()->elastic->create($type); } catch (Exception $e) { echo $e->getMessage(), PHP_EOL; }
+	public function actionCreateIndex($type = null) {
+		try { Yii::app()->elastic->createIndex($type); } catch (Exception $e) { echo $e->getMessage(), PHP_EOL; }
 	}
 
 	public function actionDelete($type = null) {
@@ -22,8 +22,6 @@ class ElasticCommand extends CConsoleCommand {
 	}
 
 	public function actionImport($type, $incremental = 1) {
-		//MongoCursor::$timeout = -1;
-		//MongoCursor::$slaveOkay = true;
 		$counter = 0;
 		$mapping = include(dirname(__FILE__) . "/../config/{$type}_mapping.php");
 
@@ -36,7 +34,7 @@ class ElasticCommand extends CConsoleCommand {
 		$docs = array();
 		foreach ($cursor as $doc) {
 			try {
-				$data = Elastic::mapData($mapping,$doc);
+				$data = Elastic::mapData($mapping,$doc->attributes);
       			$data['id'] = $doc['id'];
       			$docs [] = $data;
 

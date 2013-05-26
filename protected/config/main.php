@@ -86,12 +86,6 @@ return array(
 		    //'class' => 'ext.YiiBoosterRtl.components.Bootstrap',
 		),
 
-        'mongodb' => array(
-        	'class' => 'EMongoClient',
-        	'server' => 'mongodb://localhost:27017',
-        	'db' => 'books'
-        ),
-
 		'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/1681.db3',
 		),
