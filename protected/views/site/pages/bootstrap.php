@@ -23,12 +23,12 @@
 
 <section id="gridSystem">
           <div class="page-header">
-            <h1>عرض الشبكة الافتراضي <small>
+            <h1>عَرضُ الشَبَكةِ الإفتِراضي <small>
             Default grid system </small> </h1> <br/>
             - الصفحة الحالية: القائمة التي على اليمين تتكون من 3 اعمدة ( class="span3" ) وهذا الشرح يتكون من 9 أعمدة  ( class="span9" )
           </div>
 
-          <h2>مثال</h2>
+          <h2>أمثِلة</h2>
           <p> نظام الشبكة الافتراضي يستخدم 12 عامود، عرض الشاشة هو 940px اذا لم تكن ميزة الاستجابة مفعلة. عند تفعيل ميزة الاستجابةتتكيف الشبكة لتكون 724px 1170px واسعة اعتمادا على منفذ العرض الخاص بك.اذا كان العرض اقل من 767px، الأعمدة تصبح على شكل كومة عمودية.          </p>
           <div class="bs-docs-grid">
             <div class="row show-grid">
@@ -62,13 +62,13 @@
 
 <section id="responsive">
           <div class="page-header">
-            <h1>مرونة العرض <small>Responsive design </small></h1>
+            <h1>مُرونِةُ العَرض <small>Responsive design </small></h1>
             
           </div>
           
           <p> خاصية مرونة العرض تتيح اظهار الصفحة بشكل يتناسب مع جهاز العرض، شاشة عادية، او شاشر كبيرة او هاتف، يمكنك اذا كنت تستخدم حهاز عرض كبير، يمكنك تصغير شاشة المتصبح لرؤية ماذا يحصل للشاشة.</p>
 
-          <h2>ميزات اكثر!</h2>
+          <h2>مَيّزات أكثَر!</h2>
 
           <p> ليكون تصميمك خاص بالهاتف الجهوال، يمكنك اختيار التصينف المناسب (class) لعرض او اخفاء جزء معين، 
 
@@ -122,8 +122,8 @@
           </table>
 
 
-          <h3>مثال على المرونة</h3>
-          <p>قم بتغير شاشة المتصفح او قم بفتح الصفحة على جهاز اخر لاختبار المثال.</p>
+          <h3>مِثال على المُرونة</h3>
+          <p>قم بتغير شاشة المتصفح او قم بفتح الصفحة على جهاز اخر لاختبار المِثال.</p>
           <h4>يظهر عندما ...</h4>
           <p>المربع الاخضر يتغير حسب جهاز العرض.</p>
           <ul class="responsive-utilities-test">
@@ -144,7 +144,7 @@
 
 <section id="images">
           <div class="page-header">
-            <h1>الصور</h1>
+            <h1>الصوَر</h1>
           </div>
 
           <p>يمكنك ادخال تصنيف (class) لوسم الصورة <code>&lt;img&gt;</code> لتسهيل تنسيقه  .</p>
@@ -199,18 +199,19 @@
 
           
 
-          <h2>كيفية الاستخدام</h2>
-          <p>يمكنك استخدماها عن بواسطة وسم ال <code>&lt;i&gt;</code> مع اسم التصنيف (class) , </p>
+          <h2>كيفية الإستخدام</h2>
+          <p>استخدمها بواسطة الوسم <code>&lt;i&gt;</code> مع اسم التصنيف (class) , </p>
 <pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"icon-search"</span><span class="tag">&gt;&lt;/i&gt;</span></li></ol></pre>
 
 
 
-          <h2>امثلة</h2>
-          <p> اسخدمنا الايقونات في القائمة التي على اليميمن.</p>
+          <h2>أمثِلة</h2>
+          <p> نحن اسخدمنا الايقونات في القائمة الجانبية التي على اليمين.</p>
+          <br/>
 
           
 
-          <h4>الأزرار</h4>
+          <h4>الأَزرار</h4>
 
           <div class="bs-docs-example">
             <div class="btn-toolbar">
@@ -222,8 +223,8 @@
               </div>
             </div>
           </div>
-
-          <h5>قائمة منسدلة ومجموعة من الأزرار</h5>
+<br/>
+          <h4>قائِمةُ مُنسَدِلة ومَجموعَة من الأَزرار</h4>
           <div class="bs-docs-example">
             <div class="btn-group">
               <a class="btn btn-primary" href="#"><small><i class="icon-user icon-white"></i> المستخدم</small></a>
@@ -236,8 +237,8 @@
               </ul>
             </div>
           </div>
-          
-          <h4>التنقل</h4>
+     <br/>     
+          <h4>التَنَقٌل</h4>
           <div class="bs-docs-example">
             <div class="well" style="padding: 8px 0; margin-bottom: 0;">
               <ul class="nav nav-list">
@@ -260,7 +261,7 @@
 
 <section id="navbar">
           <div class="page-header">
-            <h1>شريط التنقل</h1>
+            <h1>شَريطُ التَنَقُل</h1>
           </div>
 
 
@@ -290,7 +291,7 @@
 
 <section id="scrollspy">
           <div class="page-header">
-            <h1> مراقب التنقل <small> ScrollSpy</small></h1>
+            <h1> مُراقِبُ التَنَقُل <small> ScrollSpy</small></h1>
           </div>          
           
           <div class="bs-docs-example">
@@ -345,7 +346,7 @@
 
 <section id="tooltips">
           <div class="page-header">
-            <h1>تلميحات <small> tooltips</small></h1>
+            <h1>تَلميحات <small> tooltips</small></h1>
           </div>
 
 
@@ -359,7 +360,7 @@
             </p>
           </div>
 
-          <h3>من الاتجاهات الأربع</h3>
+          <h3>مِن الإتِجاهات الأَربَع</h3>
           <div class="bs-docs-example tooltip-demo">
             <ul class="bs-docs-tooltip-examples">
               <li><a data-original-title="تلميح من الأعلى" href="#" data-toggle="tooltip" data-placement="top" title="">تلميح من الأعلى</a></li>
@@ -422,7 +423,7 @@
           <div class="clearfix"></div>
         </div>
 
-        <h3>مثال</h3>
+        <h3>مِثال</h3>
         
         <h4>اربع اتجاهات</h4>
         <div class="bs-docs-example tooltip-demo">
@@ -445,7 +446,7 @@
 
 <section id="carousel">
             <div class="page-header">
-              <h1>التدوير <small>Carousel</small></h1>
+              <h1>التَدوير <small>Carousel</small></h1>
             </div>
 
             <div class="bs-docs-example">
