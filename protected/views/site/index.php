@@ -3,6 +3,9 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
+    <form class="navbar-search pull-left" action="/site/search"  >
+    <input type="text" name="term" class="search-query" placeholder="بحث">
+    </form>
 
 <?php $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
     'heading'=>'أهلا بك في '.CHtml::encode(Yii::app()->name),

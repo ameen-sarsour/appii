@@ -25,13 +25,9 @@ class SiteController extends Controller
 		 try { 
 				$response = Yii::app()->elastic->search('Caption', $term , 'title');
 				$captions = json_decode( $response)->hits ; 
-
         $response = Yii::app()->elastic->search('Page', $term , 'content');
 				$pages = json_decode( $response)->hits ;
-
 				$this->render( 'search' ,array( 'captions'=>$captions->hits  , 'pages'=>$pages->hits) ) ;
-
-//				echo $response, PHP_EOL;
 				 
 			} catch (Exception $e) { 
 				echo $e->getMessage(), PHP_EOL; 

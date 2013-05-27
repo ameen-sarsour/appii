@@ -17,7 +17,7 @@ class ElasticCommand extends CConsoleCommand {
 	}
 
 	public function actionSearch($type, $term) {
-    try { $response = Yii::app()->elastic->search($type, $term); } catch (Exception $e) { echo $e->getMessage(), PHP_EOL; }
+    try { $response = Yii::app()->elastic->search($type, $term , 'content'); } catch (Exception $e) { echo $e->getMessage(), PHP_EOL; }
 		echo $response, PHP_EOL;
 	}
 
