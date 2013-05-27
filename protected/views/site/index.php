@@ -8,10 +8,10 @@ $this->pageTitle=Yii::app()->name;
     </form>
 
 <?php $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
-    'heading'=>'أهلا بك في '.CHtml::encode(Yii::app()->name),
+    'heading'=>'أهلا بِكَ في  '.CHtml::encode(Yii::app()->name),
 )); ?>
 
-<p> تهانينا ! لقد انشئت تطبيقي بنجاح</p>
+<p> تهانينا ! لقد أنشَئتَ تَطبيقي بِنَجاح</p>
 
 <?php $this->endWidget(); ?>
 

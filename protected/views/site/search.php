@@ -7,7 +7,7 @@ $this->pageTitle=Yii::app()->name;
     <input type="text" name="term" class="search-query" placeholder="بحث">
 </form>
 
-<h1> نتائج البحث في  صحيح بخاري</h1>
+<h1> نتائج البحث في  صحيح بخاري <?php echo '<small> النص: '.$_REQUEST['term'].' </small> '; ?></h1>
 <hr />
 <?php
 echo '<h2> النتائج في العناوين </h2>';
@@ -22,7 +22,7 @@ foreach ( $captions as $hit )
 	echo $title  . '<br / > <hr />';
 }
 
-echo '<br/> <br/> <h2>النتائح في الصفحات</h2>' ;
+echo '<br/> <br/> <h2>النتائح في الصفحات </h2>' ;
 foreach ( $pages as $hit ){
 	  $title =  $hit->_source->content; 
   if(isset( $hit->highlight ) ) { 
