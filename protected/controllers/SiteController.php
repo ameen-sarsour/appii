@@ -21,6 +21,20 @@ class SiteController extends Controller
 		);
 	}
 
+	public function actionSearch( $term) {
+		 try { 
+				$response = Yii::app()->elastic->search('Caption', $term , 'title');
+				$captions = json_decode( $response)->hits ; 
+        $response = Yii::app()->elastic->search('Page', $term , 'content');
+				$pages = json_decode( $response)->hits ;
+				$this->render( 'search' ,array( 'captions'=>$captions->hits  , 'pages'=>$pages->hits) ) ;
+				 
+			} catch (Exception $e) { 
+				echo $e->getMessage(), PHP_EOL; 
+			}
+	}
+
+
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
