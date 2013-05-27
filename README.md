@@ -59,3 +59,8 @@ wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearc
 
 sudo yum install elasticsearch-0.90.0.noarch.rpm
 service elasticsearch start
+
+
+
+## Done with APPII
+<a href=http://ameen.ojuba.org/>http://ameen.ojuba.org</a>
