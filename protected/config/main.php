@@ -4,7 +4,6 @@
 // Yii::setPathOfAlias('local','path/to/local-folder');
 
 Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
-
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
@@ -87,7 +86,7 @@ return array(
 		),
 
 		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/1681.db3',
+			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/appii.db',
 		),
 		// uncomment the following to use a MySQL database
 		/*
