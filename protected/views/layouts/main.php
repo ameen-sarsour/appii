@@ -44,7 +44,7 @@
 
 	<?php echo $content; ?>
 
-	<div id="footer">
+	<div id="footer" class="row span12">
 		<hr />
 		حقوق النسخة  &copy; <?php echo date('Y'); ?> لشركتي.<br/>
 		حميع الحقوق محفوظة.<br/>
