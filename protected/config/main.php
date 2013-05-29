@@ -69,6 +69,7 @@ return array(
 		'cache'=>array(
 			'class'=>'ext.redis.ARedisCache',
 			'hashKey'=>false,
+			'keyPrefix'=>'appii:',
 			),
 		'session' => array(
 			'class' => 'SelectiveCacheHttpSession',
