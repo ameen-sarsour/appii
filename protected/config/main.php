@@ -130,6 +130,14 @@ return array(
 			'client_secret'=>'ToG6js5zLZPdMyEA2xahpRv8' , 
 			'redirect_url'=>'http://appii.org/site/login?id=google',
 			'key'=>'AIzaSyBz41c0ynlDj9wlxUPswyGs43YQLCLMSrQ',
-			),
+			'scope'=>'https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile'
+		),
+		'facebook'=>array(
+			'client_id'=>'417810991650867',
+			'client_secret'=>'a5c2d4310e86f5caf29fcd3caf6bfb17' , 
+			'redirect_url'=>'http://appii.org/site/login?id=facebook',
+			//'key'=>'',
+			'scope'=>'email,user_about_me'
+		),
 	),
 );
