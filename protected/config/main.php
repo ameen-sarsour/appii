@@ -22,6 +22,7 @@ return array(
 		'application.components.*',
 		'application.lib.*',
 		'ext.imperavi-redactor-widget.*',
+		'application.components.twitter.*',
 		
 	),
 
@@ -139,5 +140,11 @@ return array(
 			//'key'=>'',
 			'scope'=>'email,user_about_me'
 		),
+		'twitter'=>array(
+			'CONSUMER_KEY' => 'wRiylVHT6dBb2RGM97h5pg',
+			'CONSUMER_SECRET'=> '29MVfKRj6BxgQrf3PBwLxXForf05IhOw0DRy3csI' ,
+            'OAUTH_CALLBACK' => 'http://appii.org/site/login?id=twitter'
+		),
+
 	),
 );

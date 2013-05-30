@@ -1,8 +1,6 @@
 <?php
 class WebUser extends CWebUser {
 	private $_model;
-	
-
 
 	function getModel() {
 		return $this->loadUser(Yii::app()->user->id);
@@ -19,7 +17,7 @@ class WebUser extends CWebUser {
 
 			$google_info = $this->getUserInfo('https://www.googleapis.com/oauth2/v2/userinfo' ,'key='.$key.'&access_token='.$access_token);
 			$google_id = $google_info ->id;
-			$user = User::model()->find("google_id =?" , array( "109592823123620610819" ) );
+			$user = User::model()->find("google_id =?" , array( $google_id ) );
 
 			if(!isset($user)) { 
 				$user = new User();
@@ -34,7 +32,7 @@ class WebUser extends CWebUser {
 			if(!isset(Yii::app()->session['access_token' ])) $google_info = $this->storeAccesstocken('facebook') ;
 			echo Yii::app()->session['access_token' ];
 			$facebook_info = $this->getUserInfo('https://graph.facebook.com/me' ,'access_token='.Yii::app()->session['access_token' ]);
-			
+			$user = User::model()->find("facebook_id =?" , array( $facebook_info->id) );
 			if(!isset($user)) { 
 				$user = new User();
 				$user->facebook_id  = $facebook_info ->id  ;
@@ -45,6 +43,53 @@ class WebUser extends CWebUser {
 			}
 
 		}
+
+		else if($id=='twitter'){
+			if(isset($_REQUEST['oauth_verifier'])){
+	            $oauth_token= Yii::app()->session['oauth_token'];
+	            $oauth_token_secret  = Yii::app()->session['oauth_token_secret'];
+	            $consumer_secrit = Yii::app()->params['twitter']['CONSUMER_SECRET'];
+	            $consumer_key = Yii::app()->params['twitter']['CONSUMER_KEY'] ;
+	            $connection = new TwitterOAuth($consumer_key,  $consumer_secrit, $oauth_token,$oauth_token_secret );
+	            $access_token = $connection->getAccessToken($_REQUEST['oauth_verifier']);
+
+	            if (200 == $connection->http_code) {
+	            	Yii::app()->session['access_token'] = $access_token;
+                    $content = $connection->get('account/verify_credentials');
+                    $id = $content->id ;
+					$user = User::model()->find("twitter =?" , array( $id) );
+					if(!isset($user)) {
+						$user = new User();
+						$user->twitter = $id  ;
+						$user->pretty_name = $content ->screen_name;
+						$user->email = '';
+						print_r($user->save());
+						print_r($user->getErrors ());
+					}
+
+	            }
+    		}else{
+	            $connection = new TwitterOAuth(Yii::app()->params['twitter']['CONSUMER_KEY'], Yii::app()->params['twitter']['CONSUMER_SECRET']);
+	            $request_token = $connection->getRequestToken(Yii::app()->params['twitter']['OAUTH_CALLBACK']);
+
+	            Yii::app()->session['oauth_token']  = $request_token['oauth_token'];
+	            Yii::app()->session['oauth_token_secret'] = $request_token['oauth_token_secret'];
+	            /* If last connection failed don't display authorization link. */
+	            switch ($connection->http_code) {
+	                    case 200:
+	                            /* Build authorize URL and redirect user to Twitter. */
+	                            $url = $connection->getAuthorizeURL($request_token);
+	                            header('Location: ' . $url);
+	                            exit;
+	                            break;
+	                    default:
+	                            /* Show notification if something went wrong. */
+	                            return false;
+            }
+    }
+
+		}
+
 			$duration= 3600*24*30 ; // 30 days
 			$this->allowAutoLogin = true;
 
