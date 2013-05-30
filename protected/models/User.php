@@ -111,4 +111,15 @@ class User extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+	public function getRole($role){
+		$auths = Yii::app()->authManager->getAuthAssignments(''.$this->Id) ;
+		$list = '';
+		foreach ($auths as $key => $value) {
+			$list.= $key ;
+		}
+
+		return $list ;
+	}
+
 }

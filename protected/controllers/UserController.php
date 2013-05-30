@@ -173,4 +173,12 @@ class UserController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+	public function actionSetrole($role){
+		$auth=Yii::app()->authManager;
+        $auth->assign($role,$this->Id);
+		$auth->save();
+		$this->redirect();
+	}
+
 }

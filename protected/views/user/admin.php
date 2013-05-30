@@ -45,10 +45,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'Id',
 		'pretty_name',
 		'email',
+
+		/*
 		'created_at',
 		'last_login',
 		'updated_at',
-		/*
 		'validation_key',
 		'subscripe',
 		'facebook_id',

@@ -29,5 +29,7 @@ $this->menu=array(
 		'facebook_id',
 		'google_id',
 		'twitter',
+		array(  'name'=>  'Role', 'value' => $model->getRole()) ,
+
 	),
 )); ?>
