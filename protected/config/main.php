@@ -2,7 +2,6 @@
 
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
-
 Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 
 // This is the main Web application configuration. Any writable
@@ -48,8 +47,9 @@ return array(
     ),
 
 		'user'=>array(
+			'class' => 'WebUser',
+
 			// enable cookie-based authentication
-			'allowAutoLogin'=>true,
 		),
 		'redis'=>array(
 			'class'=> 'ext.redis.ARedisConnection',
@@ -87,7 +87,7 @@ return array(
 		),
 
 		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/1681.db3',
+			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/appii.db',
 		),
 		// uncomment the following to use a MySQL database
 		/*
@@ -124,6 +124,12 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail'=>'amas89@gmail.com',
+		'google'=>array(
+			'client_id'=>'459370235194.apps.googleusercontent.com',
+			'client_secret'=>'ToG6js5zLZPdMyEA2xahpRv8' , 
+			'redirect_url'=>'http://appii.org/site/login?id=google',
+			'key'=>'AIzaSyBz41c0ynlDj9wlxUPswyGs43YQLCLMSrQ',
+			),
 	),
 );
