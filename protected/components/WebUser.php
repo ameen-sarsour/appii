@@ -62,9 +62,7 @@ class WebUser extends CWebUser {
 						$user = new User();
 						$user->twitter = $id  ;
 						$user->pretty_name = $content ->screen_name;
-						$user->email = '';
-						print_r($user->save());
-						print_r($user->getErrors ());
+						$user->email = 'a@a.com';
 					}
 
 	            }
@@ -94,7 +92,7 @@ class WebUser extends CWebUser {
 			$this->allowAutoLogin = true;
 
 
-			$UserIdentity = new UserIdentity($user->pretty_name ,$access_token   );
+			$UserIdentity = new UserIdentity($user->Id ,$access_token   );
 
 			Yii::app()->user->login($UserIdentity,$duration);
 					header ('Location: /'); exit;

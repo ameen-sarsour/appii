@@ -40,11 +40,16 @@ return array(
 
 	// application components
 	'components'=>array(
-    'elastic' => array(
-      'class' => 'Elastic',
-      'index' => 'appii',
-      'host' => '127.0.0.1',
-    ),
+		'elastic' => array(
+	      'class' => 'Elastic',
+	      'index' => 'appii',
+	      'host' => '127.0.0.1',
+	    ),
+
+        'authManager'=>array(
+            'class'=>'CPhpAuthManager',
+            //'connectionID'=>'db',
+        ),
 
 /*
           'clientScript' => array(

@@ -42,19 +42,18 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
-		'created_at',
-		'login_name',
+		'Id',
 		'pretty_name',
-		'password',
 		'email',
+		'created_at',
+		'last_login',
+		'updated_at',
 		/*
-		'avatar_path',
-		'clearance',
-		'mobile',
-		'activation_code',
-		'activation_type',
-		'last_login_at',
+		'validation_key',
+		'subscripe',
+		'facebook_id',
+		'google_id',
+		'twitter',
 		*/
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
