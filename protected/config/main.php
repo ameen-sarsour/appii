@@ -47,6 +47,16 @@ return array(
       'host' => '127.0.0.1',
     ),
 
+/*
+          'clientScript' => array(
+              'class' => 'ext.EClientScript.EClientScript',
+              'combineScriptFiles' => true, // By default this is set to false, set this to true if you'd like to combine the script files
+              'combineCssFiles' => true, // By default this is set to false, set this to true if you'd like to combine the css files
+              'optimizeCssFiles' => true,  // @since: 1.1
+              'optimizeScriptFiles' => true,   // @since: 1.1
+            ),
+*/
+
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
@@ -59,11 +69,13 @@ return array(
 		'cache'=>array(
 			'class'=>'ext.redis.ARedisCache',
 			'hashKey'=>false,
+			'keyPrefix'=>'appii:',
 			),
 		'session' => array(
-			'class' => 'CCacheHttpSession',
+			'class' => 'SelectiveCacheHttpSession',
 			'timeout' => 604800, // 7 days
 			'cookieParams' => array(
+				//'cookieParams' => array('domain' => '.mydomain.com'), // to include all subdomains
 				'httponly' => true,
 				'lifetime' => 604800,
 			),
@@ -71,6 +83,14 @@ return array(
 		'messages'=>array(
 			'forceTranslation' => true,
 			),
+
+/*
+    'authManager'=>array(
+        'class'=>'CachingDbAuthManager',
+        'connectionID'=>'db',
+        'cacheID'=>'cache',
+    ),
+*/
 
 		'urlManager'=>array(
 			'urlFormat'=>'path',
@@ -106,16 +126,13 @@ return array(
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
-				array(
-					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning',
-				),
-				// uncomment the following to show log messages on web pages
-				/*
-				array(
-					'class'=>'CWebLogRoute',
-				),
-				*/
+                array('class'=>'CFileLogRoute', 'levels'=>'error, warning',),
+                // uncomment the line below to show profiling on files
+                //array( 'class' => 'CFileProfileLogRoute' , 'maxFileSize'=>102400),
+                // uncomment the following to show log messages on web pages
+                //array('class'=>'CWebLogRoute',),
+                // uncomment the following to show profiling info on web pages
+                //array( 'class' => 'CProfileLogRoute' ,),
 			),
 		),
 	),
