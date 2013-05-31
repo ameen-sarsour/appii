@@ -15,6 +15,23 @@ class CacheCommand extends CConsoleCommand
     if (isset(Yii::app()->authManager) && Yii::app()->authManager instanceof CachingDbAuthManager) Yii::app()->authManager->purgeCache();
   }
 
+  public function actionBenchmark() {
+     $t0=microtime(1);
+     for($i=0;$i<10000;++$i) {
+         Yii::app()->redis->getClient()->set("mykey1", "10");
+     }
+     $delta=microtime(1)-$t0;
+     echo "YiiRedis delta $delta\n";
+     
+     $t0=microtime(1);
+     for($i=0;$i<10000;++$i) {
+         Yii::app()->redis2->set('mykey2', "10");
+     }
+     $delta=microtime(1)-$t0;
+     echo "Predis delta $delta\n";
+  }
+
+
 }
 
 
