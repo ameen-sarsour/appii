@@ -90,9 +90,6 @@ class Elastic extends CApplicationComponent {
 			'query'=>array('text'=>array($field=>$term)),
 			'highlight'=>array('pre_tags'=>array('<tag>'), 'post_tags'=>array('</tag>'), 'fields'=>array($field=> new stdClass))
 			));
-		$request = str_replace('TERM', $term, $query);
-    $request = str_replace('FIELD', $field, $request);
-
 		$response = $this->http_request->post("/{$this->index}/{$type}/_search", $request);
     self::check($response);
 		return $response;
