@@ -5,3 +5,4 @@ logs/
 *.php~
 *.js~
 *.css~
+protected/data/auth.php

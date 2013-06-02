@@ -35,7 +35,7 @@ class UserController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete' , 'setrole'),
 				'roles'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -174,11 +174,11 @@ class UserController extends Controller
 		}
 	}
 
-	public function actionSetrole($role){
-		$auth=Yii::app()->authManager;
-        $auth->assign($role,$this->Id);
-		$auth->save();
-		$this->redirect();
+	public function actionSetrole(){
+		$role = $_REQUEST['data' ] ;
+		$user_id =  $_REQUEST['user_id' ] ;
+		$user = User::model()->findByPk( $user_id );
+		$user->setRole( $role );
 	}
 
 }

@@ -5,7 +5,7 @@ class AuthCommand extends CConsoleCommand
         public function actionAddRole($user ,$role) {
                 $auth=Yii::app()->authManager;
                 $auth->assign($role,$user);
-$auth->save();
+		$auth->save();
 	}
 	
         public function actionCreate() {

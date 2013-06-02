@@ -112,14 +112,33 @@ class User extends CActiveRecord
 		));
 	}
 
-	public function getRole($role){
+	public function getRole(){
 		$auths = Yii::app()->authManager->getAuthAssignments(''.$this->Id) ;
 		$list = '';
 		foreach ($auths as $key => $value) {
 			$list.= $key ;
 		}
-
 		return $list ;
+	}
+
+	public static function getRolesList(){
+		return array('admin'=>'Admin','editor'=>'Editor','author'=>'author'  );
+	}
+
+	public function setRole($role){
+
+		$auth=Yii::app()->authManager;
+		$items = $auth->getRoles($this->Id);
+		//echo (print_r($items , true)) ;
+		foreach ($items as $item) {
+			echo $auth->revoke($item->name, $this->Id);
+			$auth->save();
+        }
+        unset($auth);	
+        $auth=Yii::app()->authManager;
+        //echo $this->Id; exit;
+        $auth->assign($role,(int)$this->Id); 
+        return ($auth->save());
 	}
 
 }

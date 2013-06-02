@@ -15,7 +15,22 @@ $this->menu=array(
 
 <h1>View User #<?php echo $model->Id; ?></h1>
 
-<?php $this->widget('bootstrap.widgets.TbDetailView',array(
+<?php
+
+
+$roles =  CHtml::dropDownList('country_id',$model->getRole(),User::getRolesList(),
+array(
+'ajax' => array(
+'type'=>'POST', //request type
+'url'=>CController::createUrl('user/setrole'), //url to call.
+//Style: CController::createUrl('currentController/methodToCall')
+'update'=>'#city_id', //selector to update
+'data'=>array('data'=> 'js: jQuery("#country_id option:selected").val()' , 'user_id'=>$model->Id  ),
+//leave out the data key to pass all form values through
+))); 
+
+
+ $this->widget('bootstrap.widgets.TbDetailView',array(
 	'data'=>$model,
 	'attributes'=>array(
 		'Id',
@@ -29,7 +44,15 @@ $this->menu=array(
 		'facebook_id',
 		'google_id',
 		'twitter',
-		array(  'name'=>  'Role', 'value' => $model->getRole()) ,
+		//array(  'name'=>  'Role', 'value' => $model->getRole()) ,
+		array(  'name'=>  'Change' , 'value' =>$roles , 'type'=>'raw')  ,
+		
 
 	),
-)); ?>
+)); 
+
+
+ 
+
+
+?>
