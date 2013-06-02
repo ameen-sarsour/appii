@@ -10,7 +10,6 @@
  * @property string $part
  * @property string $hadith
  * @property string $content
- * @property string $content_plain
  * @property integer $x_id
  *
  * The followings are the available model relations:
@@ -18,6 +17,10 @@
  */
 class Page extends CActiveRecord
 {
+
+	public function getDbConnection() {
+		return Yii::app()->dbBukhari;
+	}
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -46,10 +49,10 @@ class Page extends CActiveRecord
 		return array(
 			array('id, caption_id', 'required'),
 			array('id, caption_id, x_id', 'numerical', 'integerOnly'=>true),
-			array('number, part, hadith, content, content_plain', 'safe'),
+			array('number, part, hadith, content', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, caption_id, number, part, hadith, content, content_plain, x_id', 'safe', 'on'=>'search'),
+			array('id, caption_id, number, part, hadith, content, x_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -77,7 +80,6 @@ class Page extends CActiveRecord
 			'part' => 'Part',
 			'hadith' => 'Hadith',
 			'content' => 'Content',
-			'content_plain' => 'Content Plain',
 			'x_id' => 'X',
 		);
 	}
@@ -99,7 +101,6 @@ class Page extends CActiveRecord
 		$criteria->compare('part',$this->part,true);
 		$criteria->compare('hadith',$this->hadith,true);
 		$criteria->compare('content',$this->content,true);
-		$criteria->compare('content_plain',$this->content_plain,true);
 		$criteria->compare('x_id',$this->x_id);
 
 		return new CActiveDataProvider($this, array(

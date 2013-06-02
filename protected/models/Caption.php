@@ -19,6 +19,9 @@
  */
 class Caption extends CActiveRecord
 {
+	public function getDbConnection() {
+		return Yii::app()->dbBukhari;
+	}
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.

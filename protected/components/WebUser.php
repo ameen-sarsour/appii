@@ -107,20 +107,22 @@ class WebUser extends CWebUser {
 			$redirect_url= Yii::app()->params->google['redirect_url']; 
 			$scope= Yii::app()->params->google['scope']; 
 
-			$url = 'https://accounts.google.com/o/oauth2/token';		
+			$url = 'https://accounts.google.com/o/oauth2/token';
 			$authUrl = 'https://accounts.google.com/o/oauth2/auth?redirect_uri='.$redirect_url.'&response_type=code&client_id='.$client_id .'&approval_prompt=force&scope=' . $scope;
 
 			if (isset($_GET['code'])) {
 				$code = $_GET['code'];
 				$post_data = 'grant_type=authorization_code&code='. $code. '&client_id='.$client_id.'&client_secret='.$client_secret.'&redirect_uri='.$redirect_url;
-				$http_request = new HttpClient();
-				$response = $http_request ->post($url, $post_data ) ; 
-	  			$json = json_decode ( $response[1] ) ;
-	  			$access_token = '';
+				list($info, $content) = HttpClient::postRequest($url, null, $post_data);
+				//if ($info['code']!=200 || null===($json=json_decode($content, 1))) {
+				if ($info['code']!=200) {
+					throw new Exception('bad response: '.json_encode($info));
+				}
+				$access_token = '';
 				if(isset($json ) ){
-					$access_token =   json_decode ( $response[1] )->access_token ;
+					$access_token =   json_decode ( $content )->access_token ;
 				} else {
-					parse_str($response[1]) ;
+					parse_str($content) ;
 				}
 
 				Yii::app()->session['access_token' ] = $access_token ; 
@@ -143,14 +145,16 @@ class WebUser extends CWebUser {
 			if (isset($_GET['code'])) {
 				$code = $_GET['code'];
 				//$post_data = 'grant_type=authorization_code&code='. $code. '&client_id='.$client_id.'&client_secret='.$client_secret.'&redirect_uri='.$redirect_url;
-				$http_request = new HttpClient();
-				$response = $http_request ->get($url  . '&code='. $code);//, $post_data ) ; 
-	  			$json = json_decode ( $response[1] ) ;
+				list($info, $content) = HttpClient::getRequest($url  . '&code='. $code);
+				if ($info['code']!=200) {
+					throw new Exception('bad response: '.json_encode($info));
+				}
+	  			$json = json_decode ( $content ) ;
 	  			$access_token = '';
 				if(isset($json ) ){
-					$access_token =   json_decode ( $response[1] )->access_token ;
+					$access_token =   json_decode ( $content )->access_token ;
 				} else {
-					parse_str($response[1]) ;
+					parse_str($content) ;
 				}
 
 				Yii::app()->session['access_token' ] = $access_token ; 
@@ -164,10 +168,11 @@ class WebUser extends CWebUser {
 	}
 
 	public function getUserInfo($url , $data=''){
-		$http_request = new HttpClient();
-		$output = $http_request ->get($url .'?'.$data)[1] ; 
-		$output = json_decode($output);
-		return $output;
+		list($info, $content) = HttpClient::getRequest($url .'?'.$data);
+		if ($info['code']!=200 || null===($json=json_decode($content))) {
+			throw new Exception('bad response: '.json_encode($info));
+		}
+		return $json;
 	}
 
 }

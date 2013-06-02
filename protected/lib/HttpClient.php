@@ -22,7 +22,7 @@
 /**
  * Simple HTTP client based on cUrl, it can re-use connections
  * 
- * it support all kinds of custom HTTP methods like PUT, PURGE and DELETE
+ * it support all kinds of custom HTTP verbs like PUT, PURGE and DELETE
  * used like this
  * $http=new HttpClient();
  * list($info, $content)=$http->get($url, array($key1=>$value1, $key2=>$value2));
@@ -74,28 +74,38 @@ class HttpClient
     }
 
     /**
-     * Send a POST requst using cURL
+     * Send a custom HTTP request 
      *
-     * @param string $url     to request
-     * @param array  $params  values to send
-     * @param array  $options for cURL
+     * @param string $verb        the HTTP verb eg. GET, POST, ...etc.
+     * @param string $url         the URL to be requested
+     * @param mixed  $get_params  values to be appended as query string
+     * @param mixed  $post_params values to send in the request body (ie. POST)
+     * @param array  $options     cURL options
      *
      * @return array having two elements info and result
      */
-    public function post($url, $params = array(), $options = array())
-    {
-        $options += array(
-            CURLOPT_POST => 1,
-            CURLOPT_URL => $url,
-            CURLOPT_POSTFIELDS => (is_string($params))?
-                $params:http_build_query($params),
-        ) + $this->opt;
-        curl_setopt_array($this->curl, $options);
+    public function request(
+        $verb, $url,
+        $get_params=null, $post_params=null, $options=array()
+    ) {
+        if ($get_params!==null) {
+            $url.=(strpos($url, '?') === false ? '?' : '&')
+                .(is_string($get_params)?$get_params:http_build_query($get_params));
+        }
+        $opt=array(CURLOPT_URL=>$url, CURLOPT_CUSTOMREQUEST=>$verb)+$options;
+        if ($post_params!==null) {
+            $opt += array(
+                CURLOPT_POST => 1,
+                CURLOPT_POSTFIELDS => (is_string($post_params))?
+                    $post_params:http_build_query($post_params),
+            ) + $this->opt;
+        }
+        curl_setopt_array($this->curl, $opt);
         if (! $result = curl_exec($this->curl)) {
             return array(array(
                 'code'=>'',
                 'Content-Type'=>'',
-                'curl-Error'=>curl_error($ch)), ''
+                'curl-Error'=>curl_error($this->curl)), ''
             );
         }
         $info=array(
@@ -114,51 +124,76 @@ class HttpClient
      *
      * @return array having two elements info and result
      */
-    public function get($url, array $params = array(), array $options = array())
+    public function get($url, $params=null, $options=array())
     {   
-        if ($params) {
-            $url.=(strpos($url, '?') === false ? '?' : '')
-                .http_build_query($params);
-        }
-        $options += array(
-            CURLOPT_URL => $url,
-        ) + $this->opt;
-        curl_setopt_array($this->curl, $options);
-        if (! $result = curl_exec($this->curl)) {
-            return array(array(
-                'code'=>'',
-                'Content-Type'=>'',
-                'curl-Error'=>curl_error($ch)), ''
-            );
-        }
-        $info=array(
-          'code' => curl_getinfo($this->curl, CURLINFO_HTTP_CODE),
-          'Content-Type' => curl_getinfo($this->curl, CURLINFO_CONTENT_TYPE)
-        );
-        return array($info, $result);
+        return $this->request("GET", $url, $params, null, $options);
     }
 
 
     /**
-     * Send a custom unusual method using cURL (eg. PUT, DELETE, PURGE, ..etc.)
+     * PHP magic so that you can $http->put(...);
      *
-     * @param string $method HTTP method
-     * @param array  $args   options like post above
+     * @param string $verb HTTP method to be called
+     * @param array  $args options like request above
      *
      * @return array having two elements info and result
      */
-    public function __call($method,$args)
+    public function __call($verb, $args)
     {
-        $params=array_shift($args);
-        if ($params===NULL) $params=array();
+        $url=array_shift($args);
+        if ($params===null) {
+            $params=array();
+        }
+        $get_params=array_shift($args);
+        if ($get_params===null) {
+            $get_params=array();
+        }
+        $post_params=array_shift($args);
+        if ($post_params===null) {
+            $post_params=array();
+        }
         $options=array_shift($args);
-        if ($options===NULL) $options=array();
-        $options[CURLOPT_CUSTOMREQUEST]=strtoupper($method);
-        return $this->post($url, $params, $options);
+        if ($options===null) {
+            $options=array();
+        }
+        return $this->request(
+            strtoupper($verb), $url, $get_params, $params, $options
+        );
+    }
+
+    /**
+     * shortcut static version
+     *
+     * @return array having two elements info and result
+     */
+    public static getRequest()
+    {
+        $http=new HttpClient();
+        return call_user_func_array(array($http, 'get'), func_get_args());
+    }
+
+    /**
+     * shortcut static version
+     *
+     * @return array having two elements info and result
+     */
+    public static postRequest()
+    {
+        $http=new HttpClient();
+        return call_user_func_array(array($http, 'post'), func_get_args());
+    }
+
+    /**
+     * shortcut static version
+     *
+     * @return array having two elements info and result
+     */
+    public static customRequest()
+    {
+        $args=func_get_args();
+        $verb=array_shift($args);
+        $http=new HttpClient();
+        return call_user_func_array(array($http, $verb), $args);
     }
 
 }
-
-
- 
-

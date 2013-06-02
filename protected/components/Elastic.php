@@ -86,10 +86,10 @@ class Elastic extends CApplicationComponent {
 	}
 
 	public function search($type, $term , $field='') {
-		$query = '{"query":{"text":{"FIELD":"TERM"}}, "highlight":{"pre_tags":["<tag>"],"post_tags":["</tag>"] , "fields": {"FIELD": {}  } }}';
-		$request = str_replace('TERM', $term, $query);
-    $request = str_replace('FIELD', $field, $request);
-
+		$query = json_encode(array(
+			'query'=>array('text'=>array($field=>$term)),
+			'highlight'=>array('pre_tags'=>array('<tag>'), 'post_tags'=>array('</tag>'), 'fields'=>array($field=> new stdClass))
+			));
 		$response = $this->http_request->post("/{$this->index}/{$type}/_search", $request);
     self::check($response);
 		return $response;
