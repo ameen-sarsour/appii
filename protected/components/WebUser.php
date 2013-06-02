@@ -30,7 +30,6 @@ class WebUser extends CWebUser {
 		}
 		else if($id=='facebook'){
 			if(!isset(Yii::app()->session['access_token' ])) $google_info = $this->storeAccesstocken('facebook') ;
-			echo Yii::app()->session['access_token' ];
 			$facebook_info = $this->getUserInfo('https://graph.facebook.com/me' ,'access_token='.Yii::app()->session['access_token' ]);
 			$user = User::model()->find("facebook_id =?" , array( $facebook_info->id) );
 			if(!isset($user)) { 
@@ -114,12 +113,14 @@ class WebUser extends CWebUser {
 				$code = $_GET['code'];
 				$post_data = 'grant_type=authorization_code&code='. $code. '&client_id='.$client_id.'&client_secret='.$client_secret.'&redirect_uri='.$redirect_url;
 				list($info, $content) = HttpClient::postRequest($url, null, $post_data);
+
 				//if ($info['code']!=200 || null===($json=json_decode($content, 1))) {
 				if ($info['code']!=200) {
 					throw new Exception('bad response: '.json_encode($info));
 				}
 				$access_token = '';
-				if(isset($json ) ){
+
+				if(isset($content ) ){
 					$access_token =   json_decode ( $content )->access_token ;
 				} else {
 					parse_str($content) ;
@@ -172,6 +173,7 @@ class WebUser extends CWebUser {
 		if ($info['code']!=200 || null===($json=json_decode($content))) {
 			throw new Exception('bad response: '.json_encode($info));
 		}
+		$json = json_decode($content) ;
 		return $json;
 	}
 
