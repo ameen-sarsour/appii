@@ -12,7 +12,9 @@ class ElasticCommand extends CConsoleCommand {
 	}
 
 	public function actionMap($type) {
-		$mapping = include(dirname(__FILE__) . "/../config/{$type}_mapping.php");
+		if(!is_callable(array($type, 'getElasticMap')))
+			throw new Exception("No getElasticMap for $type");
+		$mapping=$type::getElasticMap();
 		try { Yii::app()->elastic->map($type, $mapping); } catch (Exception $e) { echo $e->getMessage(), PHP_EOL; }
 	}
 
@@ -23,7 +25,9 @@ class ElasticCommand extends CConsoleCommand {
 
 	public function actionImport($type, $incremental = 1) {
 		$counter = 0;
-		$mapping = include(dirname(__FILE__) . "/../config/{$type}_mapping.php");
+		if(!is_callable(array($type, 'getElasticMap')))
+			throw new Exception("No getElasticMap for $type");
+		$mapping=$type::getElasticMap();
 
 		$progress = 0;
 		$time1 = microtime(true);
