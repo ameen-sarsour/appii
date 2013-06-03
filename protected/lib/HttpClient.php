@@ -93,15 +93,14 @@ class HttpClient
                 .(is_string($get_params)?$get_params:http_build_query($get_params));
         }
         $opt=array(CURLOPT_URL=>$url, CURLOPT_CUSTOMREQUEST=>$verb)+$options;
-        $opt = $opt + $this->opt;
-
-        if ($post_params!==null) { 
+        if ($post_params!==null) {
             $opt += array(
                 CURLOPT_POST => 1,
                 CURLOPT_POSTFIELDS => (is_string($post_params))?
                     $post_params:http_build_query($post_params),
-            ) + $this->opt;
+            );
         }
+        $opt+=$this->opt;
         curl_setopt_array($this->curl, $opt);
         if (! $result = curl_exec($this->curl)) {
             return array(array(
@@ -143,9 +142,6 @@ class HttpClient
     public function __call($verb, $args)
     {
         $url=array_shift($args);
-        if (!isset($params) ) {
-            $params=array();
-        }
         $get_params=array_shift($args);
         if ($get_params===null) {
             $get_params=array();
@@ -158,9 +154,8 @@ class HttpClient
         if ($options===null) {
             $options=array();
         }
-        
         return $this->request(
-            strtoupper($verb), $url, $get_params,$post_params, $options
+            strtoupper($verb), $url, $get_params, $post_params, $options
         );
     }
 
