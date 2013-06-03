@@ -89,11 +89,14 @@ class SiteController extends Controller
 	/**
 	 * Displays the login page
 	 */
-	public function actionLogin()
+	public function actionLogin($id='')
 	{
-		isset($_REQUEST['id'])? Yii::app()->user->authenticate($_REQUEST['id']) : $this->render('login');
-
-		
+		if ($id) {
+			Yii::app()->user->authenticate($id);
+		}
+		else {
+			$this->render('login');
+		}
 	}
 
 	/**
