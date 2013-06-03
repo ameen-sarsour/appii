@@ -28,7 +28,7 @@ class PostController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to access 'index' and 'view' actions.
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view' , 'like' , 'dislike' ),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated users to access all actions
@@ -163,6 +163,19 @@ class PostController extends Controller
 		}
 	}
 
+	public function  actionLike()
+	{
+		//TODO: 
+		echo 'Not Imp' ;
+	}
+
+	public function  disLike()
+	{
+		//TODO: 
+		echo 'Not Imp' ;
+	}
+
+	
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
@@ -213,4 +226,5 @@ class PostController extends Controller
 		}
 		return $comment;
 	}
+
 }

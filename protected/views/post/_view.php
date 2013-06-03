@@ -1,6 +1,22 @@
 <div class="post well">
-	<div class="title">
-		<?php echo CHtml::link(CHtml::encode($data->title), $data->url); ?>
+
+	<div class="title ">
+		<span class=' span1' >
+			<?php echo CHtml::link(CHtml::encode($data->title), $data->url); ?>
+		</span >
+
+		<span class=' offset1 buttons' >
+		<i class='icon-thumbs-up' onclick=<?php echo CHtml::ajax( array( 'url'=>'/post/like' , 'update'=>'#likeLabel' )) ; ?> > </i>
+		<span  id='likeLabel' > dfds</span>
+		
+		<i class='icon-thumbs-down ' onclick=<?php echo CHtml::ajax( array( 'url'=>'/post/like' , 'update'=>'#dislikeLabel' )) ;  ?> > </i>
+		<span id='dislikeLabel'  > dfds</span>
+
+		<i class='icon-eye-open ' > </i>
+		<span id='seeCount'  > dfds</span>
+		
+	</span>
+
 	</div>
 	<div class="author">
 		posted by <?php // echo $data->author->username . ' on ' . date('F j, Y',$data->create_time); ?>
