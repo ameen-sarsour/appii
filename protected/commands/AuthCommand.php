@@ -7,7 +7,51 @@ class AuthCommand extends CConsoleCommand
                 $auth->assign($role,$user);
 		$auth->save();
 	}
-	
+
+public function actionCreateTable() {
+	$auth=Yii::app()->authManager;
+	if ($auth instanceof CDbAuthManager) {
+		$AuthItem=$auth->itemTable;
+		$AuthItemChild=$auth->itemChildTable;
+		$AuthAssignment=$auth->assignmentTable;
+		$sql=array();
+		$sql[]="CREATE TABLE IF NOT EXISTS $AuthItem (
+  name varchar(64) NOT NULL PRIMARY KEY,
+  type INTEGER NOT NULL,
+  description text,
+  bizrule text,
+  data text
+)";
+		$sql[]="
+CREATE TABLE IF NOT EXISTS $AuthItemChild (
+  parent varchar(64) NOT NULL,
+  child varchar(64) NOT NULL,
+  PRIMARY KEY (parent,child),
+  FOREIGN KEY(parent) REFERENCES $AuthItem(name),
+  FOREIGN KEY(child) REFERENCES $AuthItem(name)
+)
+";
+		$sql[]="
+CREATE TABLE IF NOT EXISTS $AuthAssignment (
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  itemname varchar(64) NOT NULL,
+  userid integer not null,
+  bizrule text,
+  data text,
+  FOREIGN KEY(userid) REFERENCES tbl_user(Id)
+)";
+		foreach($sql as $s) {
+			Yii::app()->db->createCommand($s)->execute();
+		}
+		Yii::app()->db->createCommand()->createIndex('ix_AuthItemChild__parent', $AuthItemChild, 'parent');
+		Yii::app()->db->createCommand()->createIndex('ix_AuthItemChild__child', $AuthItemChild, 'child');
+		Yii::app()->db->createCommand()->createIndex('ix_AuthAssignment__userid', $AuthAssignment, 'userid');
+		
+	} else {
+		echo "not DB based\n";
+	}
+}
+
         public function actionCreate() {
 		$auth=Yii::app()->authManager;
 
