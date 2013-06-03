@@ -45,12 +45,12 @@ return array(
 	      'index' => 'appii',
 	      'host' => '127.0.0.1',
 	    ),
-
+/*
         'authManager'=>array(
             'class'=>'CPhpAuthManager',
             //'connectionID'=>'db',
         ),
-
+*/
 /*
           'clientScript' => array(
               'class' => 'ext.EClientScript.EClientScript',
@@ -89,13 +89,12 @@ return array(
 			'forceTranslation' => true,
 			),
 
-/*
-    'authManager'=>array(
-        'class'=>'CachingDbAuthManager',
-        'connectionID'=>'db',
-        'cacheID'=>'cache',
-    ),
-*/
+
+		'authManager'=>array(
+			'class'=>'CachingDbAuthManager',
+			'connectionID'=>'db',
+			'cacheID'=>'cache',
+		),
 
 		'urlManager'=>array(
 			'urlFormat'=>'path',
