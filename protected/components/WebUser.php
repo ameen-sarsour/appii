@@ -67,7 +67,7 @@ class WebUser extends CWebUser {
 	            }
     		}else{
 	            $connection = new TwitterOAuth(Yii::app()->params['twitter']['CONSUMER_KEY'], Yii::app()->params['twitter']['CONSUMER_SECRET']);
-	            $request_token = $connection->getRequestToken(Yii::app()->params['twitter']['OAUTH_CALLBACK']);
+	            $request_token = $connection->getRequestToken(Yii::app()->controller->createAbsoluteUrl('site/login', array('id'=>'twitter')));
 
 	            Yii::app()->session['oauth_token']  = $request_token['oauth_token'];
 	            Yii::app()->session['oauth_token_secret'] = $request_token['oauth_token_secret'];
@@ -103,7 +103,7 @@ class WebUser extends CWebUser {
 		if($network == 'google') {
 			$client_id = Yii::app()->params->google['client_id'];
 			$client_secret = Yii::app()->params->google['client_secret'];
-			$redirect_url= Yii::app()->params->google['redirect_url']; 
+			$redirect_url= Yii::app()->controller->createAbsoluteUrl('site/login', array('id'=>'google')); 
 			$scope= Yii::app()->params->google['scope']; 
 
 			$url = 'https://accounts.google.com/o/oauth2/token';
@@ -137,7 +137,7 @@ class WebUser extends CWebUser {
 			$scope= Yii::app()->params->facebook['scope']; 
 			$client_id = Yii::app()->params->facebook['client_id'];
 			$client_secret = Yii::app()->params->facebook['client_secret'];
-			$redirect_url= Yii::app()->params->facebook['redirect_url']; 
+			$redirect_url= $redirect_url= Yii::app()->controller->createAbsoluteUrl('site/login', array('id'=>'facebook'));
 			$url = 'https://www.facebook.com/dialog/oauth?&scope=' . $scope  ;
 			$authUrl = $url ."&app_id=$client_id&redirect_uri=$redirect_url" ;
 
