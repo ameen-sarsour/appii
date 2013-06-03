@@ -11,5 +11,5 @@ defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 require_once($yii);
 $main_config = require( dirname(__FILE__).'/../protected/config/main.php');
 $local_config = require(dirname(__FILE__).'/../protected/config/local.php');
-$config = array_merge(  $main_config,$local_config  );
+$config = CMap::mergeArray(  $main_config,$local_config  );
 Yii::createWebApplication($config)->run();

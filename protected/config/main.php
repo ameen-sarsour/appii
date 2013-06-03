@@ -113,6 +113,8 @@ return array(
 		'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/appii.db',
 			'tablePrefix' => 'tbl_',
+			'schemaCachingDuration' => 3600,
+			'enableProfiling' => true,
 		),
 
 		'dbBukhari'=>array(
@@ -137,15 +139,9 @@ return array(
 		),
 		'log'=>array(
 			'class'=>'CLogRouter',
-			'routes'=>array(
-                array('class'=>'CFileLogRoute', 'levels'=>'error, warning',),
-                // uncomment the line below to show profiling on files
-                //array( 'class' => 'CFileProfileLogRoute' , 'maxFileSize'=>102400),
-                // uncomment the following to show log messages on web pages
-                //array('class'=>'CWebLogRoute',),
-                // uncomment the following to show profiling info on web pages
-                //array( 'class' => 'CProfileLogRoute' ,),
-			),
+            'routes'=>array(
+                  array('class'=>'CFileLogRoute', 'logFile' => 'error.log', 'levels'=>'error, warning',),
+            ),
 		),
 	),
 
@@ -154,22 +150,5 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'amas89@gmail.com',
-		'google'=>array(
-			'client_id'=>'459370235194.apps.googleusercontent.com',
-			'client_secret'=>'ToG6js5zLZPdMyEA2xahpRv8' , 
-			'key'=>'AIzaSyBz41c0ynlDj9wlxUPswyGs43YQLCLMSrQ',
-			'scope'=>'https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile'
-		),
-		'facebook'=>array(
-			'client_id'=>'417810991650867',
-			'client_secret'=>'a5c2d4310e86f5caf29fcd3caf6bfb17' , 
-			//'key'=>'',
-			'scope'=>'email,user_about_me'
-		),
-		'twitter'=>array(
-			'CONSUMER_KEY' => 'wRiylVHT6dBb2RGM97h5pg',
-			'CONSUMER_SECRET'=> '29MVfKRj6BxgQrf3PBwLxXForf05IhOw0DRy3csI' ,
-		),
-
 	),
 );
