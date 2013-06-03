@@ -2,7 +2,6 @@ public_web/assets/
 protected/runtime/
 themes/classic/views/
 logs/
-*.php~
-*.js~
-*.css~
+*~
+protected/config/local.php
 protected/data/auth.php
