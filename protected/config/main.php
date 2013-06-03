@@ -113,6 +113,7 @@ return array(
 
 		'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/appii.db',
+			'tablePrefix' => 'tbl_',
 		),
 
 		'dbBukhari'=>array(
