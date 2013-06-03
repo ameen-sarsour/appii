@@ -24,9 +24,9 @@ class SiteController extends Controller
 	public function actionSearch( $term) {
 		 try { 
 				$response = Yii::app()->elastic->search('Caption', $term , 'title');
-				$captions = json_decode( $response)->hits ; 
+				$captions = $response->hits ; 
         $response = Yii::app()->elastic->search('Page', $term , 'content');
-				$pages = json_decode( $response)->hits ;
+				$pages = $response->hits ;
 				$this->render( 'search' ,array( 'captions'=>$captions->hits  , 'pages'=>$pages->hits) ) ;
 				 
 			} catch (Exception $e) { 

@@ -4,10 +4,13 @@ class Elastic extends CApplicationComponent {
   public $type;
 	public $host;
 	public $port = 9200;
-	private $http_request;
+	private $base_url;
+	private $http;
+	private $json_opt=array(CURLOPT_HTTPHEADER => array('Content-type: application/json'));
 
 	public function init() {
-		$this->http_request = new HttpRequest($this->host, $this->port);
+		$this->base_url="http://{$this->host}:{$this->port}";
+		$this->http = new HttpClient();
 	}
 
 	public static function buildMapping($attributes_mapping) {
@@ -67,22 +70,33 @@ class Elastic extends CApplicationComponent {
 	}
 
 	public function delete($type) {
-    $url = "/{$this->index}/";
+    $url = "{$this->base_url}/{$this->index}/";
     if(isset($type)) $url .= "$type/_mapping";
-		$response = $this->http_request->delete($url);
-    self::check($response);
+	list($info, $content_s) = $this->http->delete($url);
+    if ($info['code']!=200 || null===($content=json_decode($content_s))) {
+      throw new Exception('bad response: '.json_encode($info));
+    }
+    return $content;
 	}
 
 	public function createIndex() {
-		$request = '{"settings":{"number_of_shards":5,"number_of_replicas":0}}';
-		$response = $this->http_request->put("/{$this->index}", $request);
-    self::check($response);
+		$request = json_encode(array('settings'=>array(
+			'number_of_shards'=>5, 'number_of_replicas'=>0
+		)));
+		list($info, $content_s) = $this->http->put("{$this->base_url}/{$this->index}", null, $request, $this->json_opt);
+    if ($info['code']!=200 || null===($content=json_decode($content_s))) {
+      throw new Exception('bad response: '.json_encode($info));
+    }
+    return $content;
 	}
 
 	public function map($type, $mapping) {
 		$mapping_data = array($type=>array('properties'=>self::buildMapping($mapping)));
-		$response = $this->http_request->put("/{$this->index}/{$type}/_mapping", json_encode($mapping_data));
-    self::check($response);
+		list($info, $content_s) = $this->http->put("{$this->base_url}/{$this->index}/{$type}/_mapping", null, json_encode($mapping_data), $this->json_opt);
+    if ($info['code']!=200 || null===($content=json_decode($content_s))) {
+      throw new Exception('bad response: '.json_encode($info));
+    }
+    return $content;
 	}
 
 	public function search($type, $term , $field='') {
@@ -90,9 +104,11 @@ class Elastic extends CApplicationComponent {
 			'query'=>array('text'=>array($field=>$term)),
 			'highlight'=>array('pre_tags'=>array('<tag>'), 'post_tags'=>array('</tag>'), 'fields'=>array($field=> new stdClass))
 			));
-		$response = $this->http_request->post("/{$this->index}/{$type}/_search", $request);
-    self::check($response);
-		return $response;
+		list($info, $content_s) = $this->http->post("{$this->base_url}/{$this->index}/{$type}/_search", null, $query, $this->json_opt);
+    if ($info['code']!=200 || null===($content=json_decode($content_s))) {
+      throw new Exception('bad response: '.json_encode($info));
+    }
+    return $content;
 	}
 
   public function import($type, $docs) {
@@ -102,7 +118,10 @@ class Elastic extends CApplicationComponent {
       unset($doc['id']);
 			$bulk .= "{\"index\":{\"_id\":\"{$id}\"}}" . PHP_EOL . json_encode($doc) . PHP_EOL;
 		}
-		$response = $this->http_request->put("/{$this->index}/{$type}/_bulk", $bulk);
-    self::check($response);
+		list($info, $content_s) = $this->http->put("{$this->base_url}/{$this->index}/{$type}/_bulk", null, $bulk);
+    if ($info['code']!=200 || null===($content=json_decode($content_s))) {
+      throw new Exception('bad response: '.json_encode($info));
+    }
+    return $content;
 	}
 }
