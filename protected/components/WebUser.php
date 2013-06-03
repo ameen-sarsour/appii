@@ -62,6 +62,7 @@ class WebUser extends CWebUser {
 						$user->twitter = $id  ;
 						$user->pretty_name = $content ->screen_name;
 						$user->email = 'a@a.com';
+						$user->save();
 					}
 
 	            }
@@ -84,7 +85,6 @@ class WebUser extends CWebUser {
 	                            return false;
             }
     }
-
 		}
 
 			$duration= 3600*24*30 ; // 30 days

@@ -21,6 +21,17 @@ class Page extends CActiveRecord
 	public function getDbConnection() {
 		return Yii::app()->dbBukhari;
 	}
+	
+	public static function getElasticMap() {
+		return array(
+	'id'=> array('type'=>'integer') , 
+	'number' => array('type'=>'integer') ,
+	'part' => array('type'=>'integer') ,
+	'hadith' => array('type'=>'integer') ,
+	'content' =>array('type'=>'string', 'index' => 'analyzed' ,'index_analyzer'=>'arabic' ,'search_analyzer'=>'arabic'),
+);
+	}
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
