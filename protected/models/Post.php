@@ -12,7 +12,10 @@ class Post extends CActiveRecord
 	 * @var integer $create_time
 	 * @var integer $update_time
 	 * @var integer $author_id
+	 * @var PostLike[] $postLikes
+	 @var PostLike[] $postDisLikes
 	 */
+
 	const STATUS_DRAFT=1;
 	const STATUS_PUBLISHED=2;
 	const STATUS_ARCHIVED=3;
@@ -49,7 +52,6 @@ class Post extends CActiveRecord
 			array('title', 'length', 'max'=>128),
 			array('tags', 'match', 'pattern'=>'/^[\w\s,]+$/', 'message'=>'Tags can only contain word characters.'),
 			array('tags', 'normalizeTags'),
-
 			array('title, status', 'safe', 'on'=>'search'),
 		);
 	}
@@ -65,6 +67,9 @@ class Post extends CActiveRecord
 			'author' => array(self::BELONGS_TO, 'User', 'author_id'),
 			'comments' => array(self::HAS_MANY, 'Comment', 'post_id', 'condition'=>'comments.status='.Comment::STATUS_APPROVED, 'order'=>'comments.create_time DESC'),
 			'commentCount' => array(self::STAT, 'Comment', 'post_id', 'condition'=>'status='.Comment::STATUS_APPROVED),
+			'postLikes' => array(self::HAS_MANY, 'PostLike', 'post_id' ,'condition' => '"postLikes"."like" = 1',     	),
+			'postDisLikes' => array(self::HAS_MANY, 'PostLike', 'post_id' ,'condition' => '"postDisLikes"."dislike" = 1',     	),
+			
 		);
 	}
 

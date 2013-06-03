@@ -163,16 +163,29 @@ class PostController extends Controller
 		}
 	}
 
-	public function  actionLike()
+	public function  actionLike($id)
 	{
-		//TODO: 
-		echo 'Not Imp' ;
+		$like = new PostLike();
+		$like->post_id =  $id ;
+		$like->user_id = Yii::app()->user->Id ;
+		$like->like = true;
+		$like->save();
+		$model= Post::model()->findByPk($id);
+		echo sizeof($model->postLikes );
 	}
 
-	public function  disLike()
+
+	public function  actionDisLike($id)
 	{
-		//TODO: 
-		echo 'Not Imp' ;
+
+		$like = new PostLike();
+		$like->post_id =  $id ;
+		$like->user_id = Yii::app()->user->Id ;
+		$like->dislike = true;
+		$like->save();
+		$model= Post::model()->findByPk($id);
+		echo sizeof($model->postDisLikes );
+		
 	}
 
 	
