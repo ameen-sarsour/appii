@@ -1,15 +1,14 @@
-<div class="post well">
-
+<div class="post well">	
 	<div class="title ">
 		<span class=' span1' >
 			<?php echo CHtml::link(CHtml::encode($data->title), $data->url); ?>
 		</span >
 
 		<span class=' offset1 buttons' >
-		<i class='icon-thumbs-up' onclick=<?php echo CHtml::ajax( array( 'url'=>'/post/like' , 'data' => array('id' => $data->id) , 'update'=>'#likeLabel-'. $data->id  )) ; ?> > </i>
+		<i class='icon-thumbs-up' onclick=<?php echo Yii::app()->user->isGuest?    '': CHtml::ajax( array( 'url'=>'/post/like' , 'data' => array('id' => $data->id) , 'update'=>'#likeLabel-'. $data->id  )) ; ?> > </i>
 		<span  id='likeLabel-<?php echo $data->id ;?>' >  <?php 		echo sizeof($data->postLikes ) ; ?> </span>
 		
-		<i class='icon-thumbs-down ' onclick=<?php echo CHtml::ajax( array( 'url'=>'/post/dislike'  ,'data' => array('id' => $data->id) , 'update'=>'#dislikeLabel-'.$data->id )) ;  ?> > </i>
+		<i class='icon-thumbs-down ' onclick=<?php echo Yii::app()->user->isGuest?    '':CHtml::ajax( array( 'url'=>'/post/dislike'  ,'data' => array('id' => $data->id) , 'update'=>'#dislikeLabel-'.$data->id )) ;  ?> > </i>
 		<span id='dislikeLabel-<?php echo $data->id ;?>'  > <?php 		echo sizeof($data->postDisLikes ) ; ?></span>
 
 	</span>
