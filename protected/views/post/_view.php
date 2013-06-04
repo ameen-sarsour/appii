@@ -6,11 +6,11 @@
 		</span >
 
 		<span class=' offset1 buttons' >
-		<i class='icon-thumbs-up' onclick=<?php echo CHtml::ajax( array( 'url'=>'/post/like' , 'data' => array('id' => $data->id) , 'update'=>'#likeLabel' )) ; ?> > </i>
-		<span  id='likeLabel' >  <?php 		echo sizeof($data->postLikes ) ; ?> </span>
+		<i class='icon-thumbs-up' onclick=<?php echo CHtml::ajax( array( 'url'=>'/post/like' , 'data' => array('id' => $data->id) , 'update'=>'#likeLabel-'. $data->id  )) ; ?> > </i>
+		<span  id='likeLabel-<?php echo $data->id ;?>' >  <?php 		echo sizeof($data->postLikes ) ; ?> </span>
 		
-		<i class='icon-thumbs-down ' onclick=<?php echo CHtml::ajax( array( 'url'=>'/post/dislike'  ,'data' => array('id' => $data->id) , 'update'=>'#dislikeLabel' )) ;  ?> > </i>
-		<span id='dislikeLabel'  > <?php 		echo sizeof($data->postDisLikes ) ; ?></span>
+		<i class='icon-thumbs-down ' onclick=<?php echo CHtml::ajax( array( 'url'=>'/post/dislike'  ,'data' => array('id' => $data->id) , 'update'=>'#dislikeLabel-'.$data->id )) ;  ?> > </i>
+		<span id='dislikeLabel-<?php echo $data->id ;?>'  > <?php 		echo sizeof($data->postDisLikes ) ; ?></span>
 
 	</span>
 
