@@ -29,6 +29,12 @@
 )); ?>
 
 <div class="container" id="page">
+    <?php if(Yii::app()->user->isGuest) { ?>
+    <div class='alert alert-message success fade in ' id="alert" >
+        الرجاء تسجيل الدخول للإستفادة من خدمات الموقع
+    <a class="close" data-dismiss="alert" href="#">  &times;</a>
+</div>
+<?php } //end if ?>
 <!--
     <form class="navbar-search pull-left" action="/site/search"  >
     <input type="text" name="term" class="search-query" placeholder="بحث">
