@@ -79,14 +79,14 @@ class Post extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'Id',
-			'title' => 'Title',
-			'content' => 'Content',
-			'tags' => 'Tags',
-			'status' => 'Status',
-			'create_time' => 'Create Time',
-			'update_time' => 'Update Time',
-			'author_id' => 'Author',
+			'id' => 'الرقم الفريد',
+			'title' => 'العنوان',
+			'content' => 'النص',
+			'tags' => 'الأوسمة',
+			'status' => 'الحالة',
+			'create_time' => 'تاريخ اإنشاء',
+			'update_time' => 'اخر تحديث',
+			'author_id' => 'الناشر',
 		);
 	}
 
@@ -133,6 +133,7 @@ class Post extends CActiveRecord
 		else
 			$comment->status=Comment::STATUS_APPROVED;
 		$comment->post_id=$this->id;
+		$comment->author = Yii::app()->user->id;
 		return $comment->save();
 	}
 
