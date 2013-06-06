@@ -2,7 +2,6 @@
 
 <?php $form=$this->beginWidget('CActiveForm'); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo CHtml::errorSummary($model); ?>
 
@@ -13,9 +12,21 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'content'); ?>
-		<?php echo CHtml::activeTextArea($model,'content',array('rows'=>10, 'cols'=>70)); ?>
-		<p class="hint">You may use <a target="_blank" href="http://daringfireball.net/projects/markdown/syntax">Markdown syntax</a>.</p>
+	<?php
+	echo $form->labelEx($model,'content');
+	$this->widget('ImperaviRedactorWidget', array(
+		'model' => '',
+		'id'=>'Post-Content',
+		'attribute' => 'text',
+		'name' => 'Post[content]',
+		'value'=>$model->content,
+		'options' => array(
+			'lang' => 'ar',
+			'direction'=>'rtl'
+		),
+	)); ?>
+
+
 		<?php echo $form->error($model,'content'); ?>
 	</div>
 

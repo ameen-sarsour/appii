@@ -1,10 +1,10 @@
 <div class="post well">	
 	<div class="title ">
-		<span class=' span1' >
+		<span class=' ' >
 			<?php echo CHtml::link(CHtml::encode($data->title), $data->url); ?>
 		</span >
-
-		<span class=' offset1 buttons' >
+<br/>
+		<span class=' buttons' >
 		<i class='icon-thumbs-up' onclick=<?php echo Yii::app()->user->isGuest?    '': CHtml::ajax( array( 'url'=>'/post/like' , 'data' => array('id' => $data->id) , 'update'=>'#likeLabel-'. $data->id  )) ; ?> > </i>
 		<span  id='likeLabel-<?php echo $data->id ;?>' >  <?php 		echo sizeof($data->postLikes ) ; ?> </span>
 		
@@ -15,21 +15,18 @@
 
 	</div>
 	<div class="author">
-		posted by <?php // echo $data->author->username . ' on ' . date('F j, Y',$data->create_time); ?>
+		 كتبت بواسطة <?php  echo $data->author->pretty_name . ' في ' . date('j-m-Y',$data->create_time); ?>
 	</div>
 	<div class="content">
 		<?php
-			// $this->beginWidget('CMarkdown', array('purifyOutput'=>true));
-			// echo $data->content;
-			// $this->endWidget();
+			 echo $data->content;
 		?>
 	</div>
 	<div class="nav">
-		<b>Tags:</b>
+		<b>الأوسمة:</b>
 		<?php echo implode(', ', $data->tagLinks); ?>
 		<br/>
-		<?php echo CHtml::link('Permalink', $data->url); ?> |
-		<?php echo CHtml::link("Comments ({$data->commentCount})",$data->url.'#comments'); ?> |
-		Last updated on <?php echo date('F j, Y',$data->update_time); ?>
+		<?php echo CHtml::link("التعليقات ({$data->commentCount})",$data->url.'#comments'); ?> |
+		اخر تحديث في <?php echo date('j-m-Y',$data->update_time); ?>
 	</div>
 </div>

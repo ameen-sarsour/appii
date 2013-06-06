@@ -12,7 +12,7 @@ $this->pageTitle=$model->title;
 <div id="comments">
 	<?php if($model->commentCount>=1): ?>
 		<h3>
-			<?php echo $model->commentCount>1 ? $model->commentCount . ' comments' : 'One comment'; ?>
+			<?php echo $model->commentCount>1 ? $model->commentCount . ' التعليقات' : 'تعليق واحد'; ?>
 		</h3>
 
 		<?php $this->renderPartial('_comments',array(
