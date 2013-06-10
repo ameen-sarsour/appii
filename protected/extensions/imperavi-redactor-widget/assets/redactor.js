@@ -191,6 +191,14 @@ var RLANG = {
                     }
                 } , 
 
+                code: {
+                    title: 'نص مصدري',
+                    dropdown: {
+
+                        Code: {title: 'ﻦﺻ ﻢﺻﺩﺮﻳ',callback: function(obj){obj.insertHtml('<pre style="direction:ltr"  class="prettyprint linenums" >'+obj.getSelectedHtml()+'</pre>');}}
+                    }
+                } ,
+
 
                 fontsize: {
                     title: 'حجم الخط',
@@ -221,7 +229,7 @@ var RLANG = {
                 }
 
             },
-			buttonsAdd: ['|','fontfamily' , '|' , 'fontsize' , '|' , 'tools'],
+			buttonsAdd: ['|','fontfamily' , '|' , 'fontsize' , '|' , 'tools', '|' , 'code'],
 			buttons: ['html', '|', 'formatting', '|', 'bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|',
 					'image', 'video', 'file', 'table', 'link', '|',
 					'fontcolor', 'backcolor', '|', 'alignment', '|', 'horizontalrule'], // 'underline', 'alignleft', 'aligncenter', 'alignright', 'justify'

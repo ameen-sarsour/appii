@@ -3,6 +3,8 @@ $this->breadcrumbs=array(
 	$model->title,
 );
 $this->pageTitle=$model->title;
+
+Yii::app()->clientScript->registerScriptFile('/js-gcp/run_prettify.js?lang=php');
 ?>
 <div class='row span11' > 
 	<div class=" span8">	
