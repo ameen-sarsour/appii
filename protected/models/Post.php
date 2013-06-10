@@ -72,6 +72,11 @@ class Post extends CActiveRecord
 			
 		);
 	}
+	public function popularity(){
+		return sizeof( $this->postLikes  ) - sizeof( $this->postDisLikes  )  ;
+
+
+	}
 
 	/**
 	 * @return array customized attribute labels (name=>label)

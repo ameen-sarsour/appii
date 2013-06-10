@@ -32,7 +32,7 @@ class PostController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated users to access all actions
-				'actions'=>array('like' , 'dislike' ),
+				'actions'=>array('like' , 'dislike' ,'create' ),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
