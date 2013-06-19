@@ -26,6 +26,7 @@ return array(
 	),
 
 	'modules'=>array(
+		'core',
 		// uncomment the following to enable the Gii tool
 		'gii'=>array(
 			'generatorPaths'=>array(
@@ -100,6 +101,7 @@ return array(
 			'urlFormat'=>'path',
 			'showScriptName'=>false,
 			'rules'=>array(
+				''=>'/core/site/',
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:[^\/]+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
@@ -135,7 +137,7 @@ return array(
 		*/
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
-			'errorAction'=>'site/error',
+			'errorAction'=>'core/site/error',
 		),
 		'log'=>array(
 			'class'=>'CLogRouter',
