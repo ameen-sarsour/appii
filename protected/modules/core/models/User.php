@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "tbl_user".
+ * This is the model class for table "{{user}}".
  *
- * The followings are the available columns in table 'tbl_user':
+ * The followings are the available columns in table '{{user}}':
  * @property integer $Id
  * @property string $pretty_name
  * @property string $email
@@ -15,6 +15,11 @@
  * @property string $facebook_id
  * @property string $google_id
  * @property string $twitter
+ * @property string $password
+ *
+ * The followings are the available model relations:
+ * @property Post[] $posts
+ * @property PostLike[] $postLikes
  */
 class User extends CActiveRecord
 {
@@ -33,7 +38,7 @@ class User extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'tbl_user';
+		return '{{user}}';
 	}
 
 	/**
@@ -46,10 +51,11 @@ class User extends CActiveRecord
 		return array(
 			array('pretty_name, email', 'required'),
 			array('pretty_name, email, validation_key, facebook_id, google_id, twitter', 'length', 'max'=>255),
+			array('password', 'length', 'max'=>256),
 			array('created_at, last_login, updated_at, subscripe', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('Id, pretty_name, email, created_at, last_login, updated_at, validation_key, subscripe, facebook_id, google_id, twitter', 'safe', 'on'=>'search'),
+			array('Id, pretty_name, email, created_at, last_login, updated_at, validation_key, subscripe, facebook_id, google_id, twitter, password', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,6 +67,8 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'posts' => array(self::HAS_MANY, 'Post', 'author_id'),
+			'postLikes' => array(self::HAS_MANY, 'PostLike', 'user_id'),
 		);
 	}
 
@@ -70,17 +78,18 @@ class User extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'Id' => 'ID',
-			'pretty_name' => 'Pretty Name',
-			'email' => 'Email',
-			'created_at' => 'Created At',
-			'last_login' => 'Last Login',
-			'updated_at' => 'Updated At',
-			'validation_key' => 'Validation Key',
-			'subscripe' => 'Subscripe',
-			'facebook_id' => 'Facebook',
-			'google_id' => 'Google',
-			'twitter' => 'Twitter',
+			'Id' => 'الرقم الفريد',
+			'pretty_name' => 'اسم الظهور',
+			'email' => 'البريد',
+			'created_at' => 'تاريخ الإنشاء',
+			'last_login' => 'اخر تسجيل دخول',
+			'updated_at' => 'حدث في',
+			'validation_key' => 'رمز التأكيد',
+			'subscripe' => 'القائمة البريدية',
+			'facebook_id' => 'حساب الفايسبوك',
+			'google_id' => 'حساب جوجل',
+			'twitter' => 'حساب تويتير',
+			'password' => 'كلمة السر',
 		);
 	}
 
@@ -106,11 +115,13 @@ class User extends CActiveRecord
 		$criteria->compare('facebook_id',$this->facebook_id,true);
 		$criteria->compare('google_id',$this->google_id,true);
 		$criteria->compare('twitter',$this->twitter,true);
+		$criteria->compare('password',$this->password,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+
 
 	public function getRole(){
 		$auths = Yii::app()->authManager->getAuthAssignments(''.$this->Id) ;
@@ -133,12 +144,55 @@ class User extends CActiveRecord
 		foreach ($items as $item) {
 			echo $auth->revoke($item->name, $this->Id);
 			$auth->save();
-        }
-        unset($auth);	
-        $auth=Yii::app()->authManager;
-        //echo $this->Id; exit;
-        $auth->assign($role,(int)$this->Id); 
-        return ($auth->save());
+		}
+		unset($auth);	
+		$auth=Yii::app()->authManager;
+		//echo $this->Id; exit;
+		$auth->assign($role,(int)$this->Id); 
+		return ($auth->save());
 	}
 
+	public function validatePassword($password)
+	{
+
+		return crypt($password,$this->password)===$this->password;
+	}
+
+	public function hashPassword($password)
+	{
+		return crypt($password , $this->generateSalt());
+	}
+
+	/**
+	 * Generates a salt that can be used to generate a password hash.
+	 *
+	 * The {@link http://php.net/manual/en/function.crypt.php PHP `crypt()` built-in function}
+	 * requires, for the Blowfish hash algorithm, a salt string in a specific format:
+	 *  - "$2a$"
+	 *  - a two digit cost parameter
+	 *  - "$"
+	 *  - 22 characters from the alphabet "./0-9A-Za-z".
+	 *
+	 * @param int cost parameter for Blowfish hash algorithm
+	 * @return string the salt
+	 */
+	protected function generateSalt($cost=10)
+	{
+		if(!is_numeric($cost)||$cost<4||$cost>31){
+			throw new CException(Yii::t('Cost parameter must be between 4 and 31.'));
+		}
+		// Get some pseudo-random data from mt_rand().
+		$rand='';
+		for($i=0;$i<8;++$i)
+			$rand.=pack('S',mt_rand(0,0xffff));
+		// Add the microtime for a little more entropy.
+		$rand.=microtime();
+		// Mix the bits cryptographically.
+		$rand=sha1($rand,true);
+		// Form the prefix that specifies hash algorithm type and cost parameter.
+		$salt='$2a$'.str_pad((int)$cost,2,'0',STR_PAD_RIGHT).'$';
+		// Append the random salt string in the required base64 format.
+		$salt.=strtr(substr(base64_encode($rand),0,22),array('+'=>'.'));
+		return $salt;
+	}
 }

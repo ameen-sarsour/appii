@@ -3,15 +3,15 @@
 <?php $form=$this->beginWidget('CActiveForm'); ?>
 
 
-	<?php echo CHtml::errorSummary($model); ?>
+	<?php echo CHtml::errorSummary($model , null , null  , array('class'=>'alert alert-error' )); ?>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'title'); ?>
-		<?php echo $form->textField($model,'title',array('size'=>80,'maxlength'=>128)); ?>
+		<?php echo $form->textField($model,'title',array( 'size'=>80,'maxlength'=>128)); ?>
 		<?php echo $form->error($model,'title'); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 	<?php
 	echo $form->labelEx($model,'content');
 	$this->widget('ImperaviRedactorWidget', array(
@@ -30,7 +30,7 @@
 		<?php echo $form->error($model,'content'); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'tags'); ?>
 		<?php $this->widget('CAutoComplete', array(
 			'model'=>$model,
@@ -39,18 +39,18 @@
 			'multiple'=>true,
 			'htmlOptions'=>array('size'=>50),
 		)); ?>
-		<p class="hint">Please separate different tags with commas.</p>
+		<p class="hint"> يمكنك الفصل بين الأوسمة باستخدام الفاصلة (،) .</p>
 		<?php echo $form->error($model,'tags'); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'status'); ?>
 		<?php echo $form->dropDownList($model,'status',Lookup::items('PostStatus')); ?>
 		<?php echo $form->error($model,'status'); ?>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	<div class="buttons pull-left">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'إنشاء' : 'حفظ'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

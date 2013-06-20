@@ -3,6 +3,7 @@
 
 <html lang="ar">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	<link rel="stylesheet" type="text/css" href="/css/ourstyle.css">
@@ -17,21 +18,17 @@
             'class'=>'bootstrap.widgets.TbMenu',
             'items'=>array(
                 array('label'=>'الرئيسية', 'url'=>array('/site/index')),
-                array('label'=>'عنا', 'url'=>array('/site/page', 'view'=>'about')),
                 array('label'=>'التواصل', 'url'=>array('/site/contact')),
-                array('label'=>'خروح ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+                array('label'=>'المدخلات', 'url'=>array('/post')),
+                array('label'=>'ولوج', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+                array('label'=>'إدارة ', 'url'=>array('/post/admin'), 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'خروح ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
             ),
         ),
     ),
 )); ?>
 
 <div class="container" id="page">
-    <?php if(Yii::app()->user->isGuest) { ?>
-    <div class='alert alert-message success fade in ' id="alert" >
-        الرجاء تسجيل الدخول للإستفادة من خدمات الموقع
-    <a class="close" data-dismiss="alert" href="#">  &times;</a>
-</div>
-<?php } //end if ?>
 <!--
     <form class="navbar-search pull-left" action="/site/search"  >
     <input type="text" name="term" class="search-query" placeholder="بحث">
@@ -45,8 +42,8 @@
 			'links'=>$this->breadcrumbs,
 		)); ?><!-- breadcrumbs -->
 	<?php endif?>
-
-	<?php echo $content; ?>
+    <?php echo $content; ?>
+    
 
 	<div id="footer" class="row span12">
 		<hr />

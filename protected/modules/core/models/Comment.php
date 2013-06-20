@@ -15,6 +15,7 @@ class Comment extends CActiveRecord
 	 */
 	const STATUS_PENDING=1;
 	const STATUS_APPROVED=2;
+	public $verifyCode;
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -45,6 +46,7 @@ class Comment extends CActiveRecord
 			array('author, email, url', 'length', 'max'=>128),
 			array('email','email'),
 			array('url','url'),
+			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 
 		);
 	}
@@ -73,6 +75,9 @@ class Comment extends CActiveRecord
 			'create_time' => 'تاريخ الإنشاء',
 			'author' => "الكاتب",
 			'post_id' => 'مدونة',
+			'email'=>'البريد الإلكتروني' ,
+                        'url'=>'الموقع الشخصي' ,
+
 
 		);
 	}

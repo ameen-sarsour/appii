@@ -50,7 +50,6 @@ class Post extends CActiveRecord
 			array('title, content, status', 'required'),
 			array('status', 'in', 'range'=>array(1,2,3)),
 			array('title', 'length', 'max'=>128),
-			array('tags', 'match', 'pattern'=>'/^[\w\s,]+$/', 'message'=>'Tags can only contain word characters.'),
 			array('tags', 'normalizeTags'),
 			array('title, status', 'safe', 'on'=>'search'),
 		);
@@ -89,7 +88,7 @@ class Post extends CActiveRecord
 			'content' => 'النص',
 			'tags' => 'الأوسمة',
 			'status' => 'الحالة',
-			'create_time' => 'تاريخ اإنشاء',
+			'create_time' => 'تاريخ الإنشاء',
 			'update_time' => 'اخر تحديث',
 			'author_id' => 'الناشر',
 		);
@@ -138,7 +137,7 @@ class Post extends CActiveRecord
 		else
 			$comment->status=Comment::STATUS_APPROVED;
 		$comment->post_id=$this->id;
-		$comment->author = Yii::app()->user->id;
+		
 		return $comment->save();
 	}
 

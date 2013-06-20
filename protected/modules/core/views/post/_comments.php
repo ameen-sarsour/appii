@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="time">
-		<?php echo date('F j, Y \a\t h:i a',$comment->create_time); ?>
+		<?php echo Yii::app()->dateFormatter->format('EEE، d LLLL، yyyy ', $comment->create_time ) ;  ?>
 	</div>
 
 	<div class="content">

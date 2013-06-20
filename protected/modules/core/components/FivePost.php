@@ -1,33 +1,48 @@
 <?php
-$this->breadcrumbs=array(
-	$model->title,
-);
-$this->pageTitle=$model->title;
+Yii::import('zii.widgets.CPortlet');
+ 
+class FivePost extends CWidget
+{
+    public function run() {
+           $criteria=new CDbCriteria(array(
+                        'condition'=>'status='.Post::STATUS_PUBLISHED,
+                        'order'=>'update_time DESC',
+                        'with'=>'commentCount', 
+			'limit'=>7,
+                ));
 
-Yii::app()->clientScript->registerScriptFile('/js-gcp/run_prettify.js?lang=php');
-?>
+                $data= Post::model()->findAll( 
+                        $criteria
+                ); 
+
+                $first = true ;
+                for ($i=0 ; $i < sizeof($data); $i++ ) {
+                        if($first) {
+                                $first = !$first;
+                                continue ;
+                        }
+                        $text = mb_substr(  $data[$i] ->content , 0, 1100, 'UTF-8');
+                        $index = strrpos($text," ");
+                        $text = substr($text,0,$index);
+
+                        $data[$i]->content = $text ;
+                }
+
+		foreach ($data as $model) { 
+?> 
 <div class='row span11' > 
+	<hr />
 	<div class=" span8">	
-
 		<div class="title ">
-
 			<h1>
-
 				<?php echo CHtml::link(CHtml::encode($model->title), $model->url); ?>
 			
-			
-
 		</h1 >
 <br/>
-			
 		</span>
-
 		</div>
 		
-		
-		
 		<div class="content"> 	<?php echo $model->content; ?> </div>
-		
 	</div>
 	<div class='span2' >
 		<span class=' buttons' >
@@ -39,7 +54,7 @@ Yii::app()->clientScript->registerScriptFile('/js-gcp/run_prettify.js?lang=php')
 			<br/>
 		<?php echo 'بلوحة مفاتيح ' .$model->author->pretty_name ; ?>
 		<br/>
-			<?php echo 'في يوم ' .  Yii::app()->dateFormatter->format('EEE، d LLLL، yyyy ', $model->create_time); ?>
+			<?php echo 'في يوم ' .   Yii::app()->dateFormatter->format('EEE، d LLLL، yyyy ', date('Y-m-j',$model->create_time)); ?>
 		<br />
 		<div class="nav">
 			<b>الأوسمة:</b>
@@ -47,39 +62,21 @@ Yii::app()->clientScript->registerScriptFile('/js-gcp/run_prettify.js?lang=php')
 			<br/>
 			<?php echo CHtml::link("التعليقات ({$model->commentCount})",$model->url.'#comments'); ?> 
 			<br />
-			اخر تحديث في <?php echo  Yii::app()->dateFormatter->format('EEE، d LLLL، yyyy ', $model->update_time); ?>
+			اخر تحديث في <?php echo Yii::app()->dateFormatter->format('EEE، d LLLL، yyyy ', $model->update_time); ?>
 		</div>
 		
 	</div>
 	<br/>
 
 </div>
+</div>
 
-<br />
+</div>
 
-<div id="comments" class="row span10" >
-<hr />
-	<?php if($model->commentCount>=1): ?>
-		<h3>
-			<?php echo $model->commentCount>1 ? $model->commentCount . ' التعليقات' : 'تعليق واحد'; ?>
-		</h3>
 
-		<?php $this->renderPartial('_comments',array(
-			'post'=>$model,
-			'comments'=>$model->comments,
-		)); ?>
-	<?php endif; ?>
+<?php
+		 }
 
-	<h3>اترك تعليقا</h3>
 
-	<?php if(Yii::app()->user->hasFlash('commentSubmitted')): ?>
-		<div class="flash-success">
-			<?php echo Yii::app()->user->getFlash('commentSubmitted'); ?>
-		</div>
-	<?php else: ?>
-		<?php $this->renderPartial('/comment/_form',array(
-			'model'=>$comment,
-		)); ?>
-	<?php endif; ?>
-
-</div><!-- comments -->
+    }
+}

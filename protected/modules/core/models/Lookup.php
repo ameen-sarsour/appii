@@ -58,6 +58,21 @@ class Lookup extends CActiveRecord
 		return isset(self::$_items[$type][$code]) ? self::$_items[$type][$code] : false;
 	}
 
+	public static function itemClass($type,$code)
+	{
+		if(!isset(self::$_items[$type]))
+			self::loadItems($type);
+		if($type == 'PostStatus' )
+		{
+
+			if( $code == POST::STATUS_DRAFT ) return 'label label-inverse';
+			if( $code == POST::STATUS_PUBLISHED ) return 'label label-success';
+			if( $code == POST::STATUS_ARCHIVED ) return 'label label-info';
+
+		} return 'label';
+	}
+
+
 	/**
 	 * Loads the lookup items for the specified type from the database.
 	 * @param string the item type
