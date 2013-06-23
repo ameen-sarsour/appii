@@ -101,9 +101,9 @@ return array(
 			'showScriptName'=>false,
 			'rules'=>array(
 				''=>'/core/site/',
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:[^\/]+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+				'<controller:\w+>/<id:\d+>'=>'core/<controller>/view',
+				'<controller:\w+>/<action:\w+>/<id:[^\/]+>'=>'core/<controller>/<action>',
+				'<controller:\w+>/<action:\w+>'=>'core/<controller>/<action>',
 			),
 		),
 		'bootstrap' => array(
